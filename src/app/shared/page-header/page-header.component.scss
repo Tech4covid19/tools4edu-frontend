@@ -1,0 +1,48 @@
+@import '../../../theme/index';
+
+.t4e-page-header {
+
+  width: 100%;
+  height: 506px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-top: calc(-#{$navbar-height});
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+
+  &.inner {
+    height: 353px;
+
+    .text-wrapper {
+      margin-top: 100px;
+    }
+  }
+
+  .text-wrapper {
+    @include containerPadding();
+    max-width: 840px;
+
+    button {
+      @include font('button');
+      color: #FFF;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      @include font('mainTitles');
+      color: #FFF;
+      margin: 0 0 15px;
+    }
+
+    p {
+      @include font('bodyTextLarge');
+      color: #FFF;
+      margin: 0;
+    }
+  }
+
+
+}
