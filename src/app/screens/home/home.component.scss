@@ -1,0 +1,185 @@
+@import '../../../theme/index';
+
+.t4e-home-header {
+  @include containerPadding();
+  position: relative;
+  height: 775px;
+  background: url(../../../assets/pages/home/header-bg.png);
+  //background-repeat: no-repeat;
+  //background-size: cover;
+
+  @include media-tablet {
+    height: 100vh;
+  }
+
+  .content-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 110px;
+    align-items: center;
+    justify-items: center;
+    padding-top: 110px;
+
+    .text-wrapper {
+      h1 {
+        @include font('mainTitles');
+        color: $color-text-blue;
+        margin-bottom: 24px;
+        margin-top: 0;
+      }
+
+      p {
+        @include font('bodyTextLarge');
+        color: $color-text-blue;
+        margin-top: 0;
+      }
+    }
+
+    .image-wrapper {
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    @include media-tablet {
+      grid-template-columns: 1fr;
+      padding-top: 0;
+
+      .image-wrapper {
+        display: none;
+      }
+    }
+  }
+}
+
+.t4e-cta-container {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 24px;
+  justify-items: center;
+  @include containerPadding();
+  margin-top: -140px;
+
+  &.mobile {
+    display: none;
+    margin-top: 40px;
+    padding: 0;
+
+    .cta-item {
+      margin: 0 auto;
+    }
+  }
+
+  &.desktop {
+    display: grid;
+  }
+
+  @include media-laptop {
+    grid-column-gap: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-top: -220px;
+  }
+
+  @include media-tablet {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-row-gap: 24px;
+
+    &.mobile {
+      display: grid;
+    }
+
+    &.desktop {
+      display: none;
+    }
+  }
+
+  .cta-item {
+    width: 314px;
+    height: 290px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+
+
+    @include media-desktop {
+      width: 300px;
+    }
+
+    @include media-laptop {
+      width: 245px;
+    }
+
+    @include media-tablet {
+      width: 345px;
+      height: 100px;
+    }
+
+    @include media-mobile-l {
+      width: 300px;
+      height: 100px;
+    }
+
+    .img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+
+      &.mobile {
+        display: none;
+      }
+
+      @include media-tablet {
+        display: none;
+
+        &.mobile {
+          display: block;
+        }
+      }
+    }
+
+    h3 {
+      position: absolute;
+      bottom: 40px;
+      @include font('title2');
+      color: #FFF;
+      max-width: 250px;
+      margin: 0 0 8px 20px;
+
+      @include media-laptop {
+        font-size: 26px;
+      }
+
+    }
+
+    button {
+      position: absolute;
+      bottom: 0;
+      @include font('button');
+      color: #FFF;
+      margin: 0 0 20px 20px;
+      align-self: flex-start;
+
+      @include media-laptop {
+        font-size: 12px;
+      }
+    }
+
+
+
+    &__professor {
+
+    }
+
+    &__aluno {
+
+    }
+
+    &__ee {
+
+    }
+  }
+}
