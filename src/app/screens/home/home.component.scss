@@ -167,19 +167,49 @@
         font-size: 12px;
       }
     }
+  }
+}
 
+.t4e-section-testimonies {
+  margin-top: 120px;
+  margin-bottom: 120px;
 
+  h2 {
+    @include font('title1');
+    color: $color-text-blue;
+    @include containerPadding();
+    margin: 0 0 40px;
+  }
 
-    &__professor {
+  .testimonies-wrapper {
+    .testimony-item {
+      display: flex;
+      flex-direction: column;
+      //margin: 20px;
+      max-width: 480px;
+      background: #FFFFFF;
+      box-shadow: 0px 1px 32px rgba(90, 152, 208, 0.2);
+      border-radius: 20px;
+      padding: 40px;
+      min-height: 200px;
 
-    }
+      h4 {
+        @include font('bodyTextLargeHighlight');
+        margin: 0;
+        color: $color-text-blue;
+      }
 
-    &__aluno {
+      h6 {
+        @include font('bodyText');
+        margin: 0 0 16px;
+        color: $color-text-blue;
+      }
 
-    }
-
-    &__ee {
-
+      p {
+        @include font('bodyText');
+        color: $color-text-blue;
+        margin: 0;
+      }
     }
   }
 }

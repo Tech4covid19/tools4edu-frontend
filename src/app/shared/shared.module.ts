@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
-import {RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { FooterComponent } from './footer/footer.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 
@@ -11,16 +12,17 @@ import { FooterComponent } from './footer/footer.component';
   declarations: [
     NavbarComponent,
     PageHeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    CarouselModule
   ],
   exports: [
     NavbarComponent,
     PageHeaderComponent,
-    FooterComponent
+    FooterComponent,
   ]
 })
 export class SharedModule { }

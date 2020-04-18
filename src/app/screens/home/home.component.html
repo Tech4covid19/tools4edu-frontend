@@ -49,3 +49,19 @@
     <button>SABER MAIS →</button>
   </div>
 </div>
+<section class="t4e-section t4e-section-testimonies">
+  <h2 class="t4e-section-title">TESTEMUNHOS</h2>
+  <div class="testimonies-wrapper">
+    <owl-carousel-o [options]="carouselOptions">
+      <ng-container *ngFor="let slide of testimonies$ | async">
+        <ng-template carouselSlide>
+          <div class="testimony-item">
+            <h4>{{slide.author}}</h4>
+            <h6>{{slide.occupation}}</h6>
+            <p>{{slide.text}}</p>
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</section>

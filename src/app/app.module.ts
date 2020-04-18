@@ -9,6 +9,10 @@ import { ContentComponent } from './screens/content/content.component';
 import { BlogComponent } from './screens/blog/blog.component';
 import { FaqsComponent } from './screens/faqs/faqs.component';
 import { AboutComponent } from './screens/about/about.component';
+import { GraphQLModule } from './graphql.module';
+import { HttpClientModule } from '@angular/common/http';
+import {CarouselModule} from 'ngx-owl-carousel-o';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,9 +26,12 @@ import { AboutComponent } from './screens/about/about.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    GraphQLModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    CarouselModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
