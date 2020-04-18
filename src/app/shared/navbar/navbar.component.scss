@@ -1,0 +1,173 @@
+@import '../../../theme/index';
+
+:host {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+.brand {
+  margin-top: -24px;
+  display: inline-block;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:not(.navbar--mobile) {
+    @include containerPadding();
+  }
+
+  &--mobile {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    transform: translateX(100%);
+    background-color: #FFF;
+    top: 0;
+    justify-content: flex-start;
+    align-items: flex-start;
+    transition: transform 200ms ease-in-out;
+
+    .brand {
+      margin-top: 8px;
+    }
+
+    &__nav-items {
+      flex-direction: column;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      .nav-item {
+        text-align: center;
+      }
+    }
+  }
+
+
+  &__nav-items {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    .nav-item {
+      &--home {
+        @include navMenuItem($color-red);
+
+      }
+
+      &--content {
+        @include navMenuItem($color-primary-blue)
+      }
+
+      &--blog {
+        @include navMenuItem($color-purple)
+      }
+
+      &--faqs {
+        @include navMenuItem($color-yellow)
+      }
+
+      &--about {
+        @include navMenuItem($color-pink)
+      }
+    }
+  }
+}
+
+.drawer-opener {
+  display: none;
+}
+
+
+@include media-tablet {
+
+  .navbar {
+    &--mobile {
+      &.open {
+        transform: translateX(0);
+      }
+    }
+
+    &__nav-items:not(.navbar--mobile__nav-items) {
+      display: none;
+    }
+  }
+
+  .drawer-opener {
+    position: fixed;
+    top: 27px;
+    right: 1.5rem;
+    z-index: 101;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(31, 63, 104, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+
+    &.open {
+      position: absolute;
+      right: 1.5rem;
+      background: #1F3F68;
+
+      span.hamburger {
+        background: transparent;
+
+        &:before {
+          top: 0;
+          transform: rotate(45deg);
+        }
+
+        &:after {
+          top: 0;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    span.hamburger {
+      position: relative;
+      width: 1.5rem;
+      height: 0.125rem;
+      background-color: #fff;
+      border-radius: 0.125rem;
+      transition: 0.3s ease all;
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 1.5rem;
+        height: 0.125rem;
+        display: block;
+        background-color: #fff;
+        border-radius: 0.125rem;
+        transition: 0.3s ease all;
+      }
+
+      &:before {
+        bottom: calc(100% + 0.25rem);
+      }
+
+      &:after {
+        top: calc(100% + 0.25rem);
+      }
+    }
+  }
+}
+

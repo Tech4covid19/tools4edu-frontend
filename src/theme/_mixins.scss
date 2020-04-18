@@ -1,0 +1,96 @@
+@mixin media-mobile-sm {
+  @media (max-width: 375px) { @content }
+}
+
+@mixin media-mobile-l {
+  @media (max-width: 425px) { @content }
+}
+
+@mixin media-tablet {
+  @media (max-width: 767px) { @content }
+}
+
+@mixin media-laptop-sm {
+  @media (max-width: 900px) { @content }
+}
+
+@mixin media-laptop {
+  @media (max-width: 1024px) { @content }
+}
+
+@mixin media-desktop {
+  @media (max-width: 1280px) { @content }
+}
+
+@mixin media-desktop-lg {
+  @media (max-width: 1440px) { @content }
+}
+
+@mixin font($name, $lineHeight: 1.25, $style: 'normal') {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  font-family:  map-get($font-families, $name), sans-serif;
+  font-weight:  unquote(map-get($font-weights, $name));
+  font-size:    unquote(map-get($font-sizes, $name));
+  font-style:   unquote($style);
+  line-height:  $lineHeight;
+}
+
+@mixin navMenuItem($color) {
+  padding: 8px 24px;
+  @include font('menuItems', 24px);
+  color: $color;
+  letter-spacing: 0.005em;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:after {
+      content: '';
+      display: block;
+      margin: 6px auto;
+      height: 3px;
+      width: 0;
+      background-color: transparent;
+      transition: width .5s ease, background-color .5s ease;
+    }
+
+    &:hover {
+      &:after {
+        width: 100%;
+        background-color: $color;
+      }
+    }
+
+    &.active {
+      &:after {
+        width: 100%;
+        background-color: $color;
+      }
+    }
+  }
+}
+
+@mixin containerPadding() {
+  padding-left: 220px;
+  padding-right: 220px;
+  max-width: 1000px; // 1440 - (220 + 220)
+  margin: 0 auto;
+
+  @include media-desktop {
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+
+  @include media-laptop {
+    padding-left: 84px;
+    padding-right: 84px;
+  }
+
+  @include media-laptop-sm {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}

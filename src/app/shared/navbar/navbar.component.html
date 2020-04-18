@@ -1,0 +1,49 @@
+
+
+  <nav class="navbar">
+    <a href="/" class="brand">
+      <img src="../../../assets/Logo.png" alt="Tools4Edu Logo">
+    </a>
+    <ul class="navbar__nav-items">
+      <li class="nav-item nav-item--home">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+      </li>
+      <li class="nav-item nav-item--content">
+        <a routerLink="/conteudo" routerLinkActive="active">Conteúdos</a>
+      </li>
+      <li class="nav-item nav-item--blog">
+        <a routerLink="/blog" routerLinkActive="active">Blog</a>
+      </li>
+      <li class="nav-item nav-item--faqs">
+        <a routerLink="/faqs" routerLinkActive="active">Ajuda</a>
+      </li>
+      <li class="nav-item nav-item--about">
+        <a routerLink="/sobre" routerLinkActive="active">Sobre Nós</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="drawer-opener" [ngClass]="drawerOpened ? 'open' : ''" (click)="toggleDrawer()">
+    <span class="hamburger"></span>
+  </div>
+  <nav class="navbar navbar--mobile" [ngClass]="drawerOpened ? 'open' : ''">
+    <a href="/" class="brand">
+      <img src="../../../assets/Logo-mobile.png" alt="Tools4Edu Logo">
+    </a>
+    <ul class="navbar__nav-items navbar--mobile__nav-items">
+      <li class="nav-item nav-item--home">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+      </li>
+      <li class="nav-item nav-item--content">
+        <a routerLink="/conteudo" routerLinkActive="active">Conteúdos</a>
+      </li>
+      <li class="nav-item nav-item--blog">
+        <a routerLink="/blog" routerLinkActive="active">Blog</a>
+      </li>
+      <li class="nav-item nav-item--faqs">
+        <a routerLink="/faqs" routerLinkActive="active">Ajuda</a>
+      </li>
+      <li class="nav-item nav-item--about">
+        <a routerLink="/sobre" routerLinkActive="active">Sobre Nós</a>
+      </li>
+    </ul>
+  </nav>

@@ -1,0 +1,59 @@
+$font-families: (
+  mainTitles: 'Amatic SC',
+  title1: 'Amatic SC',
+  title2: 'Amatic SC',
+  title3: 'Amatic SC',
+  menuItems: 'Amatic SC',
+  kpi: 'Barlow',
+  bodyTextLarge: 'Barlow',
+  bodyTextLargeHighlight: 'Barlow',
+  bodyText: 'Barlow',
+  bodyTextHighlight: 'Barlow',
+  captions: 'Barlow',
+  footer: 'Barlow',
+  button: 'Barlow'
+);
+
+$font-weights: (
+  mainTitles: 'bold',
+  title1: 'bold',
+  title2: 'bold',
+  title3: 'bold',
+  menuItems: 'bold',
+  kpi: '300',
+  bodyTextLarge: '300',
+  bodyTextLargeHighlight: 'bold',
+  bodyText: '300',
+  bodyTextHighlight: 'bold',
+  captions: '300',
+  footer: '300',
+  button: 'bold'
+);
+
+$font-sizes: (
+  mainTitles: '64px',
+  title1: '48px',
+  title2: '32px',
+  title3: '24px',
+  menuItems: '24px',
+  kpi: '32px',
+  bodyTextLarge: '20px',
+  bodyTextLargeHighlight: '20px',
+  bodyText: '16px',
+  bodyTextHighlight: '16px',
+  captions: '14px',
+  footer: '12px',
+  button: '14px'
+);
+
+$color-primary-blue: #5A98D0;
+$color-text-blue: #1F3F68;
+
+$color-orange: #FF8811;
+$color-green: #7BC950;
+$color-blue: #3772FF;
+$color-yellow: #EAC116;
+$color-red: #E03616;
+$color-pink: #D90368;
+$color-purple: #6402B0;
+

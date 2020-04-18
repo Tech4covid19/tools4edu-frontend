@@ -1,0 +1,31 @@
+@import "./variables";
+@import './mixins';
+@import "./reset";
+
+t4e-root {
+  .t4e-page-container {
+    padding-left: 220px;
+    padding-right: 220px;
+    max-width: 1000px; // 1440 - (220 + 220)
+    margin: 0 auto;
+
+    @include media-desktop {
+      padding-left: 150px;
+      padding-right: 150px;
+    }
+
+    @include media-laptop {
+      padding-left: 84px;
+      padding-right: 84px;
+    }
+
+    @include media-laptop-sm {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+
+  .t4e-scroll-lock {
+    overflow: hidden;
+  }
+}
