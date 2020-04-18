@@ -94,3 +94,25 @@
     padding-right: 24px;
   }
 }
+
+@mixin containerMargin() {
+  margin-left: 220px;
+  margin-right: 220px;
+  //max-width: 1000px; // 1440 - (220 + 220)
+  //margin: 0 auto;
+
+  @include media-desktop {
+    margin-left: 84px;
+    margin-right: 84px;
+  }
+
+  @include media-laptop {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+
+  @include media-laptop-sm {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+}

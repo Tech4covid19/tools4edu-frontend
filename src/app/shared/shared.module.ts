@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BlogArticleCardComponent } from './blog-article-card/blog-article-card.component';
 
 
 
@@ -13,6 +14,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     NavbarComponent,
     PageHeaderComponent,
     FooterComponent,
+    BlogArticleCardComponent,
   ],
   imports: [
     CommonModule,

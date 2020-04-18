@@ -13,6 +13,7 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import {CarouselModule} from 'ngx-owl-carousel-o';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     GraphQLModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    CarouselModule
+    CarouselModule,
+    NgxSkeletonLoaderModule
   ],
   bootstrap: [AppComponent]
 })

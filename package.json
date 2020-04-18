@@ -27,6 +27,7 @@
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.0",
     "ngx-owl-carousel-o": "^3.0.0",
+    "ngx-skeleton-loader": "^1.2.7",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
