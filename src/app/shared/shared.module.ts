@@ -25,6 +25,7 @@ import { BlogArticleCardComponent } from './blog-article-card/blog-article-card.
     NavbarComponent,
     PageHeaderComponent,
     FooterComponent,
+    BlogArticleCardComponent
   ]
 })
 export class SharedModule { }

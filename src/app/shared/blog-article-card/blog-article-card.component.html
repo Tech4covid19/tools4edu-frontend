@@ -1,1 +1,9 @@
-<p>blog-article-card works!</p>
+<div class="blog-article-item" [ngStyle]="{backgroundImage: 'url(' + cardData.images[0] + ')'}">
+  <div class="mask-overlay"></div>
+  <div class="blog-article-item__content">
+    <div class="text-wrapper">
+      <h4>{{cardData.title}} <span>{{cardData.createdAt | date:'mediumDate'}}</span></h4>
+    </div>
+    <button>VER POST →</button>
+  </div>
+</div>
