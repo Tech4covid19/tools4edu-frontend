@@ -185,6 +185,12 @@
 .t4e-section-testimonies {
 
   .testimonies-wrapper {
+    ::ng-deep {
+      .owl-stage {
+        padding-bottom: 40px;
+      }
+    }
+
     .loading-container {
       display: flex;
       ngx-skeleton-loader {
@@ -234,17 +240,53 @@
 .t4e-section-blog-articles {
   .blog-articles-wrapper {
 
+    ::ng-deep {
+      .owl-stage {
+        padding-bottom: 40px;
+      }
+    }
+
+    @include containerPadding();
+
+    @include media-desktop-sm {
+      padding: 0;
+    }
+
+
+    .blog-articles-container {
+
+      &__desktop {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+
+        @include media-desktop-sm {
+          display: none;
+        }
+      }
+
+      &__mobile {
+        display: none;
+        @include media-desktop-sm {
+          display: block;
+        }
+      }
+    }
+
     .blog-article-item {
       position: relative;
       border-radius: 40px;
-      width: 320px;
-      height: 290px;
+      width: 313px;
+      height: 291px;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
 
+      mask: url(../../../assets/card/cta-blog.png);
+      mask-size: cover;
+
       .mask-overlay {
-        background: linear-gradient(0deg, #5A98D0 0%, rgba(90, 152, 208, 0) 59.37%);
+        background: linear-gradient(0deg, #6402B0 0%, rgba(100, 2, 176, 0) 59.37%);
         width: 100%;
         height: 100%;
         position: absolute;
@@ -280,6 +322,69 @@
 
       .blog-article-summary {
 
+      }
+    }
+  }
+}
+
+.t4e-section-platforms {
+
+
+  .platforms-wrapper {
+    @include containerPadding();
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+
+    @include media-desktop-sm {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 250px);
+      grid-gap: 16px;
+      margin: 0 auto;
+
+      .platform-item:nth-of-type(odd) {
+        justify-self: right;
+      }
+
+      .platform-item:nth-of-type(even) {
+        justify-self: left;
+      }
+    }
+
+    @include media-tablet {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, 250px);
+
+      .platform-item:nth-of-type(odd), .platform-item:nth-of-type(even) {
+        justify-self: center;
+      }
+
+    }
+
+    .platform-item {
+      width: 235px;
+      height: 235px;
+
+      box-shadow: 5px 20px 50px rgba(90, 152, 208, 0.2);
+      border-radius: 20px;
+      background: #FFF;
+
+      &.empty {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        span {
+          @include font('title2');
+          color: $color-primary-blue;
+          opacity: 0.4;
+        }
+      }
+
+      img {
+        margin: 40px;
+        max-width: 100%;
+        height: auto;
       }
     }
   }

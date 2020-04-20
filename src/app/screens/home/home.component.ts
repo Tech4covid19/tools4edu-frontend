@@ -21,7 +21,7 @@ const GET_TESTIMONIES = gql`
 
 const GET_BLOG_ARTICLES_FOR_HOME = gql`
   query GetBlogArticlesForHome {
-    blogArticles {
+    blogArticles(limit: 3, onlyPublished: true) {
       title,
       summary,
       images,
@@ -128,13 +128,15 @@ export class HomeComponent implements OnInit {
       query: GET_BLOG_ARTICLES_FOR_HOME
     }).valueChanges.pipe(
       map((result: ApolloQueryResult<any>) => ({
-        blogArticles: result.data.blogArticles.filter((ba: IBlogArticle) => ba.published),
+        blogArticles: result.data.blogArticles,
         loading: result.loading,
         errors: result.errors
       }))
     ).subscribe(({ blogArticles, loading, errors}) => {
       this.blogArticlesLoading = loading;
       this.blogArticles = blogArticles;
+      console.log('articles', this.blogArticles);
+      console.log('loading', this.blogArticlesLoading);
     })
   }
 

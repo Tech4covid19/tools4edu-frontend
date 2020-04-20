@@ -73,9 +73,9 @@
 <section class="t4e-section t4e-section-blog-articles">
   <h2 class="t4e-section__title">BLOG</h2>
   <div class="blog-articles-wrapper">
-    <owl-carousel-o *ngIf="!blogArticlesLoading" [options]="blogCarouselOptions">
-      <ng-container *ngFor="let slide of blogArticles">
-        <ng-template carouselSlide>
+    <div class="blog-articles-container__desktop">
+      <ng-container *ngIf="!blogArticlesLoading">
+        <ng-container *ngFor="let slide of blogArticles">
           <div class="blog-article-item" [ngStyle]="{backgroundImage: 'url(' + slide.images[0] + ')'}">
             <div class="mask-overlay"></div>
             <div class="blog-article-item__content">
@@ -85,13 +85,47 @@
               <button>VER POST →</button>
             </div>
           </div>
-        </ng-template>
+        </ng-container>
       </ng-container>
-    </owl-carousel-o>
+    </div>
+    <div class="blog-articles-container__mobile">
+      <owl-carousel-o *ngIf="!blogArticlesLoading" [options]="blogCarouselOptions">
+        <ng-container *ngFor="let slide of blogArticles">
+          <ng-template carouselSlide>
+            <div class="blog-article-item" [ngStyle]="{backgroundImage: 'url(' + slide.images[0] + ')'}">
+              <div class="mask-overlay"></div>
+              <div class="blog-article-item__content">
+                <div class="text-wrapper">
+                  <h4>{{slide.title}} <span>{{slide.createdAt | date:'mediumDate'}}</span></h4>
+                </div>
+                <button>VER POST →</button>
+              </div>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
     <div class="loading-container" *ngIf="blogArticlesLoading">
       <ngx-skeleton-loader count="3"></ngx-skeleton-loader>
       <ngx-skeleton-loader count="3"></ngx-skeleton-loader>
       <ngx-skeleton-loader count="3"></ngx-skeleton-loader>
+    </div>
+  </div>
+</section>
+<section class="t4e-section t4e-section-platforms">
+  <h2 class="t4e-section__title">PLATAFORMAS</h2>
+  <div class="platforms-wrapper">
+    <div class="platform-item">
+      <img src="../../../assets/pages/home/platforms-zoom.png" alt="Zoom">
+    </div>
+    <div class="platform-item">
+      <img src="../../../assets/pages/home/platforms-teams.png" alt="Teams">
+    </div>
+    <div class="platform-item empty">
+      <span>BREVEMENTE</span>
+    </div>
+    <div class="platform-item empty">
+      <span>BREVEMENTE</span>
     </div>
   </div>
 </section>

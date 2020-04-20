@@ -18,6 +18,10 @@
   @media (max-width: 1024px) { @content }
 }
 
+@mixin media-desktop-sm {
+  @media (max-width: 1120px) { @content }
+}
+
 @mixin media-desktop {
   @media (max-width: 1280px) { @content }
 }
