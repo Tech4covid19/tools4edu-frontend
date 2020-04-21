@@ -6,6 +6,8 @@ import { PageHeaderComponent } from './page-header/page-header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BlogArticleCardComponent } from './blog-article-card/blog-article-card.component';
+import { FiltersComponent } from './filters/filters.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -15,17 +17,20 @@ import { BlogArticleCardComponent } from './blog-article-card/blog-article-card.
     PageHeaderComponent,
     FooterComponent,
     BlogArticleCardComponent,
+    FiltersComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
-    CarouselModule
+    CarouselModule,
+    ReactiveFormsModule
   ],
   exports: [
     NavbarComponent,
     PageHeaderComponent,
     FooterComponent,
-    BlogArticleCardComponent
+    BlogArticleCardComponent,
+    FiltersComponent
   ]
 })
 export class SharedModule { }

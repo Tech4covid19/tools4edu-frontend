@@ -15,6 +15,8 @@ import {CarouselModule} from 'ngx-owl-carousel-o';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 import {PrivacyComponent} from './screens/privacy/privacy.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {AppService} from './app.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,11 @@ import {PrivacyComponent} from './screens/privacy/privacy.component';
     HttpClientModule,
     BrowserAnimationsModule,
     CarouselModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+    AppService
   ],
   bootstrap: [AppComponent]
 })

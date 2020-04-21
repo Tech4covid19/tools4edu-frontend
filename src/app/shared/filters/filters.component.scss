@@ -1,0 +1,65 @@
+@import 'theme';
+
+.filters-wrapper {
+  &__title {
+    @include font('bodyTextHighlight', 130%);
+    color: $color-text-blue;
+    letter-spacing: 0.005em;
+  }
+
+  &__content {
+
+    .filter-item {
+      display: flex;
+      box-shadow: 0 5px 5px rgba(75, 93, 104, 0.1);
+      border-radius: 20px;
+      padding: 8px 16px;
+      min-width: 236px;
+      outline: none;
+      background: #FFF;
+      justify-content: flex-start;
+
+      transition:
+        color 250ms ease,
+        background 250ms ease
+      ;
+
+      span {
+        flex: 1;
+        @include font('button', 24px);
+        color: $color-text-blue;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+        text-align: left;
+      }
+
+      i {
+        width: 24px;
+        height: 24px;
+        background: $color-primary-blue;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        transition: transform 250ms ease;
+      }
+
+      &.selected {
+        background: $color-text-blue;
+
+        span {
+          flex: 1;
+          @include font('button', 24px);
+          color: #FFF;
+          letter-spacing: 0.01em;
+          text-transform: uppercase;
+        }
+
+        i {
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+}

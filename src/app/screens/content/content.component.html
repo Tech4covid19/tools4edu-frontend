@@ -3,3 +3,24 @@
   title="Conteúdos"
   description="Descubra conteúdos preparados para o ajudar a utilizar ferramentas tecnológicas indicadas pelo ME. Encontre ainda conteúdos sobre metodologias e ferramentas de apoio que ajudarão a melhorar a experiência para todos."
 ></t4e-page-header>
+
+<t4e-filters
+  title="Providers"
+  [fields]="providerFields$"
+  [selectedIndexes]="[]"
+  (onSelectFields)="selectedProviders$.next($event)"
+></t4e-filters>
+
+<t4e-filters
+  title="Stakeholders"
+  [fields]="stakeholderFields$"
+  [selectedIndexes]="[]"
+  (onSelectFields)="selectedStakeholders$.next($event)"
+></t4e-filters>
+
+<t4e-filters
+  title="Tags"
+  [fields]="tagFields$"
+  [selectedIndexes]="[]"
+  (onSelectFields)="selectedTags$.next($event)"
+></t4e-filters>
