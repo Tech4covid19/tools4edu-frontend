@@ -33,7 +33,13 @@ const GET_CONTENT_ITEMS = gql`
       videoTime,
       imageUrl,
       createdAt,
-      updatedAt
+      updatedAt,
+      stakeholder {
+        code
+      }
+      provider {
+        code
+      }
     }
 
   }

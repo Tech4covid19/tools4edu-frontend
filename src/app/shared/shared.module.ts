@@ -32,7 +32,8 @@ import { ContentCardComponent } from './content-card/content-card.component';
     PageHeaderComponent,
     FooterComponent,
     BlogArticleCardComponent,
-    FiltersComponent
+    FiltersComponent,
+    ContentCardComponent
   ]
 })
 export class SharedModule { }

@@ -8,6 +8,7 @@
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-areas: 'filters content-items';
+  grid-column-gap: 110px;
 
   .t4e-content-filters {
     grid-area: filters;
@@ -80,5 +81,13 @@
 
   .t4e-content-items {
     grid-area: content-items;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(320px, 1fr);
+
+    grid-row-gap: 40px;
+    grid-column-gap: 24px;
+
   }
 }
