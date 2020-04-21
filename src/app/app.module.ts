@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {CarouselModule} from 'ngx-owl-carousel-o';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
+import {PrivacyComponent} from './screens/privacy/privacy.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
     ContentComponent,
     BlogComponent,
     FaqsComponent,
-    AboutComponent
+    AboutComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,

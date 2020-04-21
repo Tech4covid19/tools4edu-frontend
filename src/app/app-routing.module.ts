@@ -5,6 +5,7 @@ import {ContentComponent} from './screens/content/content.component';
 import {BlogComponent} from './screens/blog/blog.component';
 import {FaqsComponent} from './screens/faqs/faqs.component';
 import {AboutComponent} from './screens/about/about.component';
+import {PrivacyComponent} from './screens/privacy/privacy.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'conteudo', component: ContentComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'faqs', component: FaqsComponent },
-  { path: 'sobre', component: AboutComponent }
+  { path: 'sobre', component: AboutComponent },
+  { path: 'privacidade', component: PrivacyComponent }
 ];
 
 @NgModule({

@@ -1,4 +1,6 @@
-
+<div class="drawer-opener" [ngStyle]="drawerOpened ? { display: 'none'} : { display: 'flex' }" [ngClass]="drawerOpened ? 'open' : ''" (click)="toggleDrawer()">
+  <span class="hamburger"></span>
+</div>
 
   <nav class="navbar">
     <a href="/" class="brand">
@@ -22,10 +24,12 @@
       </li>
     </ul>
   </nav>
-  <div class="drawer-opener" [ngClass]="drawerOpened ? 'open' : ''" (click)="toggleDrawer()">
-    <span class="hamburger"></span>
-  </div>
+
   <nav class="navbar navbar--mobile" [ngClass]="drawerOpened ? 'open' : ''">
+    <div class="drawer-opener" [ngClass]="drawerOpened ? 'open' : ''" (click)="toggleDrawer()">
+      <span class="hamburger"></span>
+    </div>
+
     <a href="/" class="brand">
       <img src="../../../assets/Logo-mobile.png" alt="Tools4Edu Logo">
     </a>
@@ -46,4 +50,5 @@
         <a routerLink="/sobre" routerLinkActive="active">Sobre Nós</a>
       </li>
     </ul>
+
   </nav>

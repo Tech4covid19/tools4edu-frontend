@@ -120,3 +120,25 @@
     margin-right: 24px;
   }
 }
+
+@mixin footerDimensions() {
+  max-width: 75%;
+  padding-left: 220px;
+
+  @include media-desktop {
+    padding-left: 84px;
+  }
+
+  @include media-laptop {
+    padding-left: 24px;
+  }
+
+  @include media-laptop-sm {
+    max-width: 80%;
+    padding-left: 24px;
+  }
+
+  @include media-tablet {
+    max-width: 95%;
+  }
+}
