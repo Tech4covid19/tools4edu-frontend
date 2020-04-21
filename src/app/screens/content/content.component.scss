@@ -1,0 +1,84 @@
+@import 'theme';
+
+.t4e-content-page {
+  margin-top: 60px;
+  margin-bottom: 120px;
+
+  @include containerPadding();
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas: 'filters content-items';
+
+  .t4e-content-filters {
+    grid-area: filters;
+
+    ::ng-deep {
+      .filters-wrapper {
+        margin-bottom: 60px;
+
+        &__title {
+          margin-bottom: 16px;
+        }
+        &__content {
+          .filter-item {
+            margin-bottom: 8px;
+          }
+        }
+      }
+    }
+
+    .results-panel {
+      &__title {
+        @include font('bodyTextLargeHighlight', 130%);
+        color: $color-text-blue;
+        letter-spacing: 0.005em;
+        margin-bottom: 16px;
+      }
+
+      &__text {
+        @include font('bodyText');
+        color: $color-text-blue;
+        margin-bottom: 40px;
+
+        span {
+          @include font('bodyTextHighlight');
+        }
+      }
+
+      &__clear-btn {
+        background-color: lighten($color-red, 40%);
+        display: flex;
+        box-shadow: 0 5px 5px rgba(75, 93, 104, 0.1);
+        border-radius: 20px;
+        padding: 8px 16px;
+        min-width: 236px;
+        outline: none;
+        justify-content: flex-start;
+        align-items: center;
+
+        span {
+          @include font('button');
+          color: $color-red;
+          text-transform: uppercase;
+        }
+
+        i {
+          background-color: $color-red;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: auto;
+          transform: rotate(45deg);
+          box-shadow: 0px 5px 5px rgba(75, 93, 104, 0.1);
+        }
+      }
+    }
+  }
+
+  .t4e-content-items {
+    grid-area: content-items;
+  }
+}

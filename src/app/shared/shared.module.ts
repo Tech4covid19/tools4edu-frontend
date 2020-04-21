@@ -8,6 +8,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BlogArticleCardComponent } from './blog-article-card/blog-article-card.component';
 import { FiltersComponent } from './filters/filters.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { ContentCardComponent } from './content-card/content-card.component';
 
 
 
@@ -18,6 +19,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     FooterComponent,
     BlogArticleCardComponent,
     FiltersComponent,
+    ContentCardComponent,
   ],
   imports: [
     CommonModule,

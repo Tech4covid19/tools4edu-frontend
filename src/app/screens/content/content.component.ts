@@ -8,6 +8,7 @@ import {ITag} from '../../interfaces/tag.interface';
 import {filter, map} from 'rxjs/operators';
 import {IFilterField, IFilters} from '../../shared/filters/interfaces/filters.interface';
 import {Apollo, QueryRef} from 'apollo-angular';
+import {IContentItem} from '../../interfaces/content-item.interface';
 
 const GET_CONTENT_ITEMS = gql`
   query GetContentItems(
@@ -38,21 +39,6 @@ const GET_CONTENT_ITEMS = gql`
   }
 `;
 
-const GET_CONTENT_ITEMS_COUNT = gql`
-  query GetContentItemsCount(
-    $stakeholderIds: [String],
-    $providerIds: [String],
-    $tagIds: [String]
-  ) {
-    contentItemTotalCount(
-      stakeholderIds: $stakeholderIds,
-      providerIds: $providerIds,
-      tagIds: $tagIds,
-      onlyPublished: true
-    )
-  }
-`;
-
 @Component({
   selector: 't4e-content',
   templateUrl: './content.component.html',
@@ -69,6 +55,9 @@ export class ContentComponent implements OnInit {
   selectedTags$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
 
   contentItemsQueryRef: QueryRef<any>;
+  contentItemsCountQueryRef: QueryRef<any>;
+
+  contentItems: IContentItem[] = [];
 
   constructor(
     private appService: AppService,
@@ -85,9 +74,11 @@ export class ContentComponent implements OnInit {
     })
 
     this.contentItemsQueryRef.valueChanges.subscribe(({data, loading, errors}) => {
-      if (!loading)
+      if (!loading) {
         console.log('content items', data.contentItems);
-    })
+        this.contentItems = data.contentItems;
+      }
+    });
 
     combineLatest(
       this.selectedProviders$,
