@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IContentItem} from '../../interfaces/content-item.interface';
+import {IContentItem} from '../../../interfaces/content-item.interface';
 
 @Component({
   selector: 't4e-content-card',

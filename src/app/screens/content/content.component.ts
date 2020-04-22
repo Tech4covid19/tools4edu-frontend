@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import {AppService} from '../../app.service';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {IFilters} from '../../shared/filters/interfaces/filters.interface';
+import {IFilters} from '../../shared/components/filters/interfaces/filters.interface';
 import {Apollo, QueryRef} from 'apollo-angular';
 import {IContentItem} from '../../interfaces/content-item.interface';
 import {ActivatedRoute} from '@angular/router';

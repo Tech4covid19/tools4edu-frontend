@@ -1,4 +1,4 @@
-@import '../../../theme/index';
+@import 'theme';
 
 .blog-article-item {
   position: relative;
@@ -9,7 +9,7 @@
   background-repeat: no-repeat;
   background-size: cover;
 
-  mask: url(../../../assets/card/cta-blog.png);
+  mask: url(/assets/card/cta-blog.png);
   mask-size: cover;
 
   .mask-overlay {
