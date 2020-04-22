@@ -1,0 +1,55 @@
+.t4e-media-player {
+  width: 100%;
+  /* max-width: 10px; */
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+
+  ::ng-deep .mejs__mediaelement,
+  .mejs__poster {
+    mask-image: url(/assets/pages/content-detail/video-mask.png);
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: cover;
+    mask-border-slice: 20px;
+  }
+
+  ::ng-deep .mejs__container-fullscreen .mejs__mediaelement {
+    mask-image: none;
+  }
+
+  ::ng-deep .mejs__container-fullscreen .mejs__mediaelement video {
+    //width: auto !important;
+    //height: 100vh !important;
+  }
+
+  ::ng-deep .mejs__controls:not([style*="display: none"]) {
+    background: transparent;
+    margin-bottom: 24px;
+    padding: 0 30px;
+  }
+  ::ng-deep .mejs__container {
+    background: #fff;
+    font-family: Helvetica, Arial, serif;
+    position: relative;
+    text-align: left;
+    text-indent: 0;
+    vertical-align: top;
+  }
+
+  ::ng-deep .mejs__overlay {
+    border-radius: 40px;
+    //background: linear-gradient(0deg, rgba(123, 201, 80, 0.7) 0%, rgba(123, 201, 80, 0) 23.58%)
+  }
+
+  video {
+    width: 100% !important;
+    height: auto !important;
+    display: flex;
+    flex: 1 1 100%;
+  }
+}

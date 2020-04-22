@@ -22,5 +22,21 @@ export class ContentDetailComponent implements OnInit {
       this.contentItem = queryResult.data.contentItem;
     })
   }
+  getBackgroundHeader(): string {
+    if (this.contentItem.stakeholder) {
+      switch(this.contentItem.stakeholder.code) {
+        case 'PROFESSOR':
+          return 'assets/pages/content-detail/professor-header-bg.png';
+
+        case 'ALUNO':
+          return 'assets/pages/content-detail/aluno-header-bg.png';
+
+        case 'PAIS':
+          return 'assets/pages/content-detail/pais-header-bg.png';
+      }
+    } else {
+      return 'assets/pages/content-detail/generic-header-bg.png';
+    }
+  }
 
 }

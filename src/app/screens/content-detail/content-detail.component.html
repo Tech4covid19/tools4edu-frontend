@@ -1,1 +1,10 @@
-<p>content-detail works!</p>
+<t4e-page-header
+  isInnerPage="true"
+  [backgroundImage]="getBackgroundHeader()"
+  [title]="contentItem.title"
+  backLabel="< VOLTAR PARA CONTEÚDOS"
+  backUrl="/conteudo"
+></t4e-page-header>
+<section class="t4e-content-item">
+  <t4e-media-player *ngIf="contentItem.videoUrl" [videoUrl]="contentItem.videoUrl"></t4e-media-player>
+</section>

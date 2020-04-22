@@ -29,6 +29,11 @@
       @include font('button');
       color: #FFF;
       margin-bottom: 16px;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     h1 {
