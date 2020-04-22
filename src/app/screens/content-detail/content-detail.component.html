@@ -6,5 +6,24 @@
   backUrl="/conteudo"
 ></t4e-page-header>
 <section class="t4e-content-item">
-  <t4e-media-player *ngIf="contentItem.videoUrl" [videoUrl]="contentItem.videoUrl"></t4e-media-player>
+  <div class="content__media-player">
+    <t4e-media-player
+      *ngIf="contentItem.videoUrl"
+      [videoUrl]="contentItem.videoUrl"
+      [videoPoster]="getVideoPoster()"
+    ></t4e-media-player>
+  </div>
+  <div class="content__info">
+    <div class="block" *ngFor="let block of contentInfoBlocks">
+      <div class="block__title">{{block.title}}</div>
+      <div class="block__value">{{block.value}}</div>
+    </div>
+  </div>
+  <div class="content__text">
+    <div class="title" *ngIf="contentItem.type === 'CONTENT-TUTORIAL-VIDEO'">DESCRITIVO</div>
+    <div class="text" [innerHTML]="contentItem.text"></div>
+  </div>
+  <div class="content__tags">
+
+  </div>
 </section>

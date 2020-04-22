@@ -12,6 +12,8 @@ declare const MediaElementPlayer: any;
 export class MediaPlayerComponent implements OnInit, OnChanges {
 
   @Input() videoUrl: string;
+  @Input() videoPoster: string;
+
   @ViewChild('mediaPlayerElement') mediaPlayerElement: ElementRef
 
   mediaPlayer: any;

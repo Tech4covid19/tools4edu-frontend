@@ -1,3 +1,76 @@
+@import 'theme';
+
 .t4e-content-item {
-  margin-top: 60px;
+  @include containerPadding();
+  max-width: 1280px;
+  margin: 60px auto 0;
+
+  .content {
+    &__media-player {
+      margin-bottom: 60px;
+    }
+
+    &__info {
+      display: flex;
+      margin-left: 90px;
+      margin-right: 90px;
+      margin-bottom: 40px;
+
+      @include media-laptop {
+        margin-left: 45px;
+        margin-right: 45px;
+      }
+
+      @include media-tablet {
+        margin-right: 0;
+        margin-left: 0;
+      }
+
+      .block {
+        margin-right: 80px;
+
+        @include media-tablet {
+          margin-right: 24px;
+        }
+
+        &__title {
+          @include font('title2', 130%);
+          color: $color-text-blue;
+        }
+
+        &__value {
+          @include font('bodyTextLarge');
+          color: $color-primary-blue;
+        }
+      }
+    }
+
+    &__text {
+      margin-left: 90px;
+      margin-right: 90px;
+
+      @include media-laptop {
+        margin-left: 45px;
+        margin-right: 45px;
+      }
+
+      @include media-tablet {
+        margin-right: 0;
+        margin-left: 0;
+      }
+
+      .title {
+        @include font('title2', 130%);
+        color: $color-text-blue;
+      }
+
+      .text {
+        @include bodyTextFormatting()
+      }
+    }
+
+    &__tags {
+
+    }
+  }
 }
