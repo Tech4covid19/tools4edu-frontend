@@ -25,4 +25,9 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  navigateOut() {
+    this.drawerOpened = false;
+    this.renderer.removeClass(document.body, 't4e-scroll-lock');
+  }
+
 }

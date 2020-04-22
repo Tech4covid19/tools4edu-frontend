@@ -12,7 +12,7 @@ export class FiltersComponent implements OnInit {
 
   @Input() title: string;
   @Input() fields: Observable<IFilters>;
-  @Input() selectedIndexes: number[] = [];
+  @Input() initialFilters: string[] = [];
   @Output() onSelectFields: EventEmitter<string[]> = new EventEmitter<string[]>();
 
   filterForm: FormGroup
@@ -34,7 +34,9 @@ export class FiltersComponent implements OnInit {
 
       result.filterFields.forEach((field, index) => {
         let state = '';
-        if (this.selectedIndexes.length > 0 && this.selectedIndexes.includes(index)) {
+        console.log('initial filters', this.initialFilters)
+        console.log('field value', field.value)
+        if (this.initialFilters.length > 0 && this.initialFilters.includes(field.value)) {
           state = field.value;
         }
         (this.filterForm.controls.filters as FormArray).push(

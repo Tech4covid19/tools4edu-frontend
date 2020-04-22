@@ -1,14 +1,12 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import gql from 'graphql-tag';
 import {AppService} from '../../app.service';
-import {BehaviorSubject, combineLatest, Observable, Subscription} from 'rxjs';
-import {IProvider} from '../../interfaces/provider.interface';
-import {IStakeholder} from '../../interfaces/stakeholder.interface';
-import {ITag} from '../../interfaces/tag.interface';
-import {filter, map} from 'rxjs/operators';
-import {IFilterField, IFilters} from '../../shared/filters/interfaces/filters.interface';
+import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {IFilters} from '../../shared/filters/interfaces/filters.interface';
 import {Apollo, QueryRef} from 'apollo-angular';
 import {IContentItem} from '../../interfaces/content-item.interface';
+import {ActivatedRoute} from '@angular/router';
 
 const GET_CONTENT_ITEMS = gql`
   query GetContentItems(
@@ -70,10 +68,13 @@ export class ContentComponent implements OnInit {
 
   constructor(
     private appService: AppService,
-    private apollo: Apollo
+    private apollo: Apollo,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    window.scroll(0,0);
+
     this.providerFields$ = this.appService.getProviderFilterFields()
     this.stakeholderFields$ = this.appService.getStakeholderFilterFields();
     this.tagFields$ = this.appService.getTagFilterFields();
@@ -84,10 +85,20 @@ export class ContentComponent implements OnInit {
 
     this.contentItemsQueryRef.valueChanges.subscribe(({data, loading, errors}) => {
       if (!loading) {
-        console.log('content items', data.contentItems);
         this.contentItems = data.contentItems;
       }
     });
+
+    this.activatedRoute.queryParams.subscribe((result) => {
+      console.log('params', result)
+      if (result.provider) {
+        this.selectedProviders$.next([result.provider])
+      }
+
+      if (result.stakeholder) {
+        this.selectedStakeholders$.next([result.stakeholder])
+      }
+    })
 
     combineLatest(
       this.selectedProviders$,

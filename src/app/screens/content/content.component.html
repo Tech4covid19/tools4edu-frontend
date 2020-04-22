@@ -8,21 +8,21 @@
     <t4e-filters
       title="Providers"
       [fields]="providerFields$"
-      [selectedIndexes]="[]"
+      [initialFilters]="selectedProviders$.getValue()"
       (onSelectFields)="selectedProviders$.next($event)"
     ></t4e-filters>
 
     <t4e-filters
       title="Stakeholders"
       [fields]="stakeholderFields$"
-      [selectedIndexes]="[]"
+      [initialFilters]="selectedStakeholders$.getValue()"
       (onSelectFields)="selectedStakeholders$.next($event)"
     ></t4e-filters>
 
     <t4e-filters
       title="Tags"
       [fields]="tagFields$"
-      [selectedIndexes]="[]"
+      [initialFilters]="selectedTags$.getValue()"
       (onSelectFields)="selectedTags$.next($event)"
     ></t4e-filters>
 
@@ -66,28 +66,21 @@
     <t4e-filters
       title="Providers"
       [fields]="providerFields$"
-      [selectedIndexes]="[]"
+      [initialFilters]="selectedProviders$.getValue()"
       (onSelectFields)="selectedProviders$.next($event)"
     ></t4e-filters>
 
     <t4e-filters
       title="Stakeholders"
       [fields]="stakeholderFields$"
-      [selectedIndexes]="[]"
+      [initialFilters]="selectedStakeholders$.getValue()"
       (onSelectFields)="selectedStakeholders$.next($event)"
     ></t4e-filters>
 
     <t4e-filters
       title="Tags"
       [fields]="tagFields$"
-      [selectedIndexes]="[]"
-      (onSelectFields)="selectedTags$.next($event)"
-    ></t4e-filters>
-
-    <t4e-filters
-      title="Tags"
-      [fields]="tagFields$"
-      [selectedIndexes]="[]"
+      [initialFilters]="selectedTags$.getValue()"
       (onSelectFields)="selectedTags$.next($event)"
     ></t4e-filters>
 

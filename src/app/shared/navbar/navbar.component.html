@@ -35,19 +35,19 @@
     </a>
     <ul class="navbar__nav-items navbar--mobile__nav-items">
       <li class="nav-item nav-item--home">
-        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+        <a routerLink="/" (click)="navigateOut()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
       </li>
       <li class="nav-item nav-item--content">
-        <a routerLink="/conteudo" routerLinkActive="active">Conteúdos</a>
+        <a routerLink="/conteudo" (click)="navigateOut()" routerLinkActive="active">Conteúdos</a>
       </li>
       <li class="nav-item nav-item--blog">
-        <a routerLink="/blog" routerLinkActive="active">Blog</a>
+        <a routerLink="/blog" (click)="navigateOut()" routerLinkActive="active">Blog</a>
       </li>
       <li class="nav-item nav-item--faqs">
-        <a routerLink="/faqs" routerLinkActive="active">Ajuda</a>
+        <a routerLink="/faqs" (click)="navigateOut()" routerLinkActive="active">Ajuda</a>
       </li>
       <li class="nav-item nav-item--about">
-        <a routerLink="/sobre" routerLinkActive="active">Sobre Nós</a>
+        <a routerLink="/sobre" (click)="navigateOut()" routerLinkActive="active">Sobre Nós</a>
       </li>
     </ul>
 
