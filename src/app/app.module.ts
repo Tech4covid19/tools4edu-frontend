@@ -17,6 +17,7 @@ import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 import {PrivacyComponent} from './screens/privacy/privacy.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppService} from './app.service';
+import {ContentDetailComponent} from './screens/content-detail/content-detail.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {AppService} from './app.service';
     BlogComponent,
     FaqsComponent,
     AboutComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    ContentDetailComponent
   ],
   imports: [
     BrowserModule,

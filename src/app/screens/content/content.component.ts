@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import gql from 'graphql-tag';
 import {AppService} from '../../app.service';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -7,41 +6,7 @@ import {IFilters} from '../../shared/components/filters/interfaces/filters.inter
 import {Apollo, QueryRef} from 'apollo-angular';
 import {IContentItem} from '../../interfaces/content-item.interface';
 import {ActivatedRoute} from '@angular/router';
-
-const GET_CONTENT_ITEMS = gql`
-  query GetContentItems(
-    $stakeholderIds: [String],
-    $providerIds: [String],
-    $tagIds: [String],
-    $limit: Float,
-    $startAt: Float
-  ) {
-    contentItems(
-      stakeholderIds: $stakeholderIds,
-      providerIds: $providerIds,
-      tagIds: $tagIds,
-      limit: $limit,
-      startAt: $startAt,
-      onlyPublished: true
-    ) {
-      type,
-      title,
-      slug,
-      order,
-      videoTime,
-      imageUrl,
-      createdAt,
-      updatedAt,
-      stakeholder {
-        code
-      }
-      provider {
-        code
-      }
-    }
-
-  }
-`;
+import {ContentItemsService} from '../../shared/services/content-items.service';
 
 @Component({
   selector: 't4e-content',
@@ -69,7 +34,8 @@ export class ContentComponent implements OnInit {
   constructor(
     private appService: AppService,
     private apollo: Apollo,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private contentItemsService: ContentItemsService
   ) { }
 
   ngOnInit(): void {
@@ -79,9 +45,7 @@ export class ContentComponent implements OnInit {
     this.stakeholderFields$ = this.appService.getStakeholderFilterFields();
     this.tagFields$ = this.appService.getTagFilterFields();
 
-    this.contentItemsQueryRef = this.apollo.watchQuery({
-      query: GET_CONTENT_ITEMS
-    })
+    this.contentItemsQueryRef = this.contentItemsService.getContentItems();
 
     this.contentItemsQueryRef.valueChanges.subscribe(({data, loading, errors}) => {
       if (!loading) {
