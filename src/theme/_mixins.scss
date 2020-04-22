@@ -88,6 +88,11 @@
     padding-right: 84px;
   }
 
+  @include media-desktop-sm {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
   @include media-laptop {
     padding-left: 24px;
     padding-right: 24px;

@@ -9,6 +9,7 @@ import { BlogArticleCardComponent } from './blog-article-card/blog-article-card.
 import { FiltersComponent } from './filters/filters.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { ContentCardComponent } from './content-card/content-card.component';
+import { FilterDrawerComponent } from './filter-drawer/filter-drawer.component';
 
 
 
@@ -20,6 +21,7 @@ import { ContentCardComponent } from './content-card/content-card.component';
     BlogArticleCardComponent,
     FiltersComponent,
     ContentCardComponent,
+    FilterDrawerComponent,
   ],
   imports: [
     CommonModule,
@@ -33,7 +35,8 @@ import { ContentCardComponent } from './content-card/content-card.component';
     FooterComponent,
     BlogArticleCardComponent,
     FiltersComponent,
-    ContentCardComponent
+    ContentCardComponent,
+    FilterDrawerComponent
   ]
 })
 export class SharedModule { }

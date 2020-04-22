@@ -15,8 +15,6 @@ export class FiltersComponent implements OnInit {
   @Input() selectedIndexes: number[] = [];
   @Output() onSelectFields: EventEmitter<string[]> = new EventEmitter<string[]>();
 
-  selectedFields$: Observable<string[]>
-
   filterForm: FormGroup
   filterFields: IFilterField[];
 

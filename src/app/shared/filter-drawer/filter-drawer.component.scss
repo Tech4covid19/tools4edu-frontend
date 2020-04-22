@@ -1,0 +1,164 @@
+@import "theme";
+
+.t4e-filter-drawer {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  border-radius: 20px 20px 0 0;
+  background-color: #FFF;
+  width: 100%;
+  max-height: 70vh;
+  z-index: 200;
+
+  transition: transform 250ms ease-in-out;
+
+  &.opened {
+    transform: translateY(0);
+  }
+
+
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: lighten($color-primary-blue, 35%);
+    border-radius: 20px 20px 0 0;
+
+    span {
+      @include font('button');
+      color: $color-primary-blue;
+    }
+
+    i {
+      width: 40px;
+      height: 40px;
+      background: $color-primary-blue;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0px 5px 5px rgba(75, 93, 104, 0.1);
+      transform: rotate(45deg);
+      margin-left: auto;
+
+      svg {
+        width: 26px;
+        height: 26px;
+      }
+    }
+  }
+
+  &__content {
+    padding: 24px 16px;
+    width: calc(100% - 32px);
+    overflow-y: scroll;
+    height: calc(100% - 50px);
+    bottom: 0;
+
+    ::ng-deep {
+      .filters-wrapper {
+        margin-bottom: 40px;
+        width: 100%;
+
+        &__title {
+          margin-bottom: 16px;
+        }
+
+        &__content {
+          button {
+            width: 100%;
+            margin-bottom: 8px;
+          }
+        }
+      }
+
+      .results-panel {
+        &__title {
+          @include font('bodyTextLargeHighlight', 130%);
+          color: $color-text-blue;
+          letter-spacing: 0.005em;
+          margin-bottom: 16px;
+        }
+
+        &__text {
+          @include font('bodyText');
+          color: $color-text-blue;
+          margin-bottom: 24px;
+
+          span {
+            @include font('bodyTextHighlight');
+          }
+        }
+
+        &__clear-btn {
+          background-color: lighten($color-red, 40%);
+          display: flex;
+          box-shadow: 0 5px 5px rgba(75, 93, 104, 0.1);
+          border-radius: 20px;
+          padding: 8px 16px;
+          min-width: 236px;
+          outline: none;
+          justify-content: flex-start;
+          align-items: center;
+
+          span {
+            @include font('button');
+            color: $color-red;
+            text-transform: uppercase;
+          }
+
+          i {
+            background-color: $color-red;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            transform: rotate(45deg);
+            box-shadow: 0px 5px 5px rgba(75, 93, 104, 0.1);
+          }
+        }
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 32px);
+    padding: 16px;
+    background-color: #FFF;
+
+    button {
+      padding: 16px 24px;
+      background-color: $color-green;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      border-radius: 50px;
+
+      span {
+        @include font('button');
+        color: #FFF;
+        margin-right: 12px;
+      }
+
+      i {
+        margin-left: auto;
+        width: 21px;
+        height: 21px;
+
+        svg {
+          width: 21px;
+          height: 21px;
+        }
+      }
+    }
+  }
+}

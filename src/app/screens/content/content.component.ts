@@ -60,10 +60,13 @@ export class ContentComponent implements OnInit {
   selectedStakeholders$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
   selectedTags$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
 
+  totalSelectedFilters: number = 0;
+
   contentItemsQueryRef: QueryRef<any>;
-  contentItemsCountQueryRef: QueryRef<any>;
 
   contentItems: IContentItem[] = [];
+
+  filterDrawerOpened: boolean = false;
 
   constructor(
     private appService: AppService,
@@ -103,6 +106,8 @@ export class ContentComponent implements OnInit {
       console.log('stakeholderIds', stakeholderIds);
       console.log('tagIds', tagIds);
 
+      this.totalSelectedFilters = providerIds.length + stakeholderIds.length + tagIds.length;
+
       this.contentItemsQueryRef.refetch({
         providerIds,
         stakeholderIds,
@@ -110,6 +115,10 @@ export class ContentComponent implements OnInit {
       })
     })
 
+  }
+
+  openFilterDrawer() {
+    this.filterDrawerOpened = true;
   }
 
 }
