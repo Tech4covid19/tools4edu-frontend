@@ -1,0 +1,13 @@
+.t4e-pills-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  .pill-item {
+    @include font('captions');
+    border-radius: 16px;
+    padding: 7px 16px;
+    background-color: lighten($color-primary-blue, 35%);
+    color: $color-primary-blue;
+    margin-right: 4px;
+  }
+}

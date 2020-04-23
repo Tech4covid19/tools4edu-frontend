@@ -36,9 +36,28 @@
 
   font-family:  map-get($font-families, $name), sans-serif;
   font-weight:  unquote(map-get($font-weights, $name));
-  font-size:    unquote(map-get($font-sizes, $name));
   font-style:   unquote($style);
   line-height:  $lineHeight;
+  font-size: unquote(map-get($font-sizes, $name));
+
+  @if $name == bodyText {
+    font-size: unquote(map-get($font-sizes, bodyTextLarge));
+  }
+
+  @if $name == bodyTextHighlight {
+    font-size: unquote(map-get($font-sizes, bodyTextLargeHighlight));
+  }
+
+  @include media-tablet {
+    @if $name == bodyTextLarge {
+      font-size: unquote(map-get($font-sizes, bodyText))
+    }
+
+    @if $name == bodyTextLargeHighlight {
+      font-size: unquote(map-get($font-sizes, bodyTextHighlight))
+    }
+  }
+
 }
 
 @mixin navMenuItem($color) {
@@ -149,51 +168,112 @@
 }
 
 @mixin bodyTextFormatting() {
-  h1 {
+  ::ng-deep {
+    h1 {
 
-  }
+    }
 
-  h2 {
+    h2 {
 
-  }
+    }
 
-  h3 {
+    h3 {
+      @include font('title3');
+    }
 
-  }
+    h4 {
 
-  h4 {
+    }
 
-  }
+    h5 {
 
-  h5 {
+    }
 
-  }
+    h6 {
 
-  h6 {
+    }
 
-  }
+    blockquote {
 
-  blockquote {
+    }
 
-  }
+    pre {
 
-  pre {
+    }
 
-  }
+    figure {
 
-  figure {
+    }
 
-  }
+    ul {
+      list-style: none;
+      li {
+        @include font('bodyText');
+        color: $color-text-blue;
 
-  ul {
+        &:before {
+          content: "•";
+          color: $color-text-blue;
+          display: inline-block;
+          width: 1em;
+          margin-left: -1em;
+        }
+      }
+    }
 
-  }
+    ol {
+      list-style: none;
+      counter-reset: li;
 
-  ol {
+      li {
+        font-size: 20px;
+        counter-increment: li;
+        color: $color-text-blue;
+        @include font('bodyText');
 
-  }
+        &:before {
+          content: counter(li);
+          color: $color-text-blue;
+          display: inline-block;
+          width: 1em;
+          margin-left: -1em;
+        }
+      }
+    }
 
-  li {
+    li {
 
+    }
+
+    p {
+      margin: 0 0 24px;
+      color: $color-text-blue;
+      @include font('bodyText');
+    }
+
+    br {
+      display: block;
+      content: "";
+      border-bottom: 10px solid transparent; // Works in Chrome/Safari
+    }
+    @-moz-document url-prefix() {
+      br {
+        margin-bottom: 10px; // As 'border-bottom' doesn't work in firefox and 'margin-bottom' doesn't work in Chrome/Safari.
+      }
+    }
+
+    strong {
+      @include font('bodyTextHighlight');
+      color: $color-text-blue;
+    }
+
+    u {
+
+    }
+
+    a {
+      @include font('bodyText');
+      color: $color-text-blue;
+    }
   }
 }

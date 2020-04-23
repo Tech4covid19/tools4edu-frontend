@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {IContentItem} from '../../interfaces/content-item.interface';
+import {IPillItem} from '../../interfaces/pill-item.interface';
 
 @Component({
   selector: 't4e-content-detail',
@@ -12,6 +13,7 @@ export class ContentDetailComponent implements OnInit {
   contentItem: IContentItem
   loading: boolean;
   contentInfoBlocks: Array<{ title: string, value: string }> = [];
+  tagPills: Array<IPillItem> = [];
 
   constructor(
     private route: ActivatedRoute
@@ -22,6 +24,28 @@ export class ContentDetailComponent implements OnInit {
       this.loading = queryResult.data.loading;
       this.contentItem = queryResult.data.contentItem;
       this.contentInfoBlocks = this.getContentInfoBlocks();
+      this.tagPills = [];
+      if (this.contentItem.stakeholder) {
+        this.tagPills.push({
+            title: this.contentItem.stakeholder?.title,
+            actionType: 'NAVIGATE',
+            actionValue: '/conteudo?stakeholder='+this.contentItem.stakeholder?.id
+        });
+      }
+      if (this.contentItem.provider) {
+        this.tagPills.push({
+          title: this.contentItem.provider?.title,
+          actionType: 'NAVIGATE',
+          actionValue: '/conteudo?provider='+this.contentItem.provider?.id
+        })
+      }
+      if (this.contentItem.tags) {
+        this.tagPills.push({
+          title: this.contentItem.tags[0]?.title,
+          actionType: 'NAVIGATE',
+          actionValue: '/conteudo?tag='+this.contentItem.tags[0]?.id
+        })
+      }
     })
 
 
@@ -71,7 +95,11 @@ export class ContentDetailComponent implements OnInit {
     const wordCount = this.contentItem.text.split(' ').length;
     const readingTime = wordCount / WORDS_PER_MINUTE;
 
-    return readingTime.toFixed(0);
+    if (readingTime < 1) {
+      return 1;
+    } else {
+      return readingTime.toFixed(0);
+    }
   }
 
   getContentInfoBlocks(): Array<{ title: string, value: string }> {
@@ -87,7 +115,7 @@ export class ContentDetailComponent implements OnInit {
         break;
       case 'CONTENT-ARTICLE':
         infoBlocks.push({ title: 'Conteúdo', value: 'Artigo' })
-        infoBlocks.push({ title: 'Tempo Leitura', value: this.getReadingTime() })
+        infoBlocks.push({ title: 'Leitura', value: this.getReadingTime() + ' min' })
         infoBlocks.push({ title: 'Temática', value: this.contentItem.tags[0].title })
         break;
       default:
