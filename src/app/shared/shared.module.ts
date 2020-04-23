@@ -14,6 +14,7 @@ import { ContentItemsService } from './services/content-items.service';
 import { MediaPlayerComponent } from './components/media-player/media-player.component';
 import { AccordionComponent } from './components/accordion/accordion.component';
 import {FaqsService} from './services/faqs.service';
+import {BlogItemsService} from './services/blog-items.service';
 
 const SHARED_COMPONENTS = [
   NavbarComponent,
@@ -29,7 +30,8 @@ const SHARED_COMPONENTS = [
 
 const SHARED_SERVICES = [
   ContentItemsService,
-  FaqsService
+  FaqsService,
+  BlogItemsService
 ]
 
 @NgModule({

@@ -1,5 +1,9 @@
 @import 'theme';
 
+:host {
+  outline: none;
+}
+
 .content-card {
   position: relative;
   display: flex;
@@ -16,6 +20,7 @@
   transition: 0.2s ease box-shadow, 0.2s ease transform;
 
   cursor: pointer;
+  outline: none;
 
   &.content-article {
     background-position: 97% 35%;

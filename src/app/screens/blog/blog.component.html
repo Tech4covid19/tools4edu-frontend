@@ -1,1 +1,27 @@
-<p>blog works!</p>
+<t4e-page-header
+  backgroundImage="assets/pages/blog/header-bg.png"
+  title="Blog"
+  description="Encontre aqui informação, sugestões e partilha de boas-práticas para o ajudar obter os melhores resultados. Iremos manter o nosso Blog sempre actualizado."
+></t4e-page-header>
+<div class="t4e-blog-page">
+  <section class="blog-articles-list">
+    <ng-container *ngFor="let article of blogArticlesList">
+      <t4e-blog-article-card [cardData]="article"></t4e-blog-article-card>
+    </ng-container>
+  </section>
+  <ng-container *ngIf="currentResultCount < totalResultCount">
+    <div class="current-results" *ngIf="blogArticlesList.length > 0">
+      <button class="show-more-btn" (click)="handleShowMore()">
+        <span>MOSTRAR MAIS</span>
+        <i>
+          <svg width="16" height="8" viewBox="0 0 16 8" fill="#5A98D0" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 0.999999L8 7L15 1" stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </i>
+      </button>
+      <div class="content">
+          A mostrar <strong>{{currentResultCount}}</strong> de <strong>{{totalResultCount}}</strong> items.
+      </div>
+    </div>
+  </ng-container>
+</div>

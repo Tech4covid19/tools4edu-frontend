@@ -13,7 +13,8 @@ const GET_FAQ_ITEMS = gql`
       stakeholderIds: $stakeholderIds,
       providerIds: $providerIds,
       limit: $limit,
-      startAt: $startAt
+      startAt: $startAt,
+      onlyPublished: true
     ) {
       id,
       order,

@@ -8,6 +8,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  cursor: pointer;
+  outline: none;
 
   mask: url(/assets/card/cta-blog.png);
   mask-size: cover;
@@ -27,6 +29,8 @@
     left: 16px;
 
     .text-wrapper {
+      max-width: 90%;
+
       h4 {
         @include font('title2');
         color: #FFF;
@@ -36,7 +40,8 @@
         span {
           @include font('bodyTextLargeHighlight');
           color: #FFF;
-          margin-left: 12px;
+          margin-left: 0;
+          white-space: nowrap;
         }
       }
     }

@@ -40,23 +40,23 @@
   line-height:  $lineHeight;
   font-size: unquote(map-get($font-sizes, $name));
 
-  @if $name == bodyText {
-    font-size: unquote(map-get($font-sizes, bodyTextLarge));
-  }
+  //@if $name == bodyText {
+  //  font-size: unquote(map-get($font-sizes, bodyTextLarge));
+  //}
+  //
+  //@if $name == bodyTextHighlight {
+  //  font-size: unquote(map-get($font-sizes, bodyTextLargeHighlight));
+  //}
 
-  @if $name == bodyTextHighlight {
-    font-size: unquote(map-get($font-sizes, bodyTextLargeHighlight));
-  }
-
-  @include media-tablet {
-    @if $name == bodyTextLarge {
-      font-size: unquote(map-get($font-sizes, bodyText))
-    }
-
-    @if $name == bodyTextLargeHighlight {
-      font-size: unquote(map-get($font-sizes, bodyTextHighlight))
-    }
-  }
+  //@include media-tablet {
+  //  @if $name == bodyTextLarge {
+  //    font-size: unquote(map-get($font-sizes, bodyText))
+  //  }
+  //
+  //  @if $name == bodyTextLargeHighlight {
+  //    font-size: unquote(map-get($font-sizes, bodyTextHighlight))
+  //  }
+  //}
 
 }
 

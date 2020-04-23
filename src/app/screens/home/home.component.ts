@@ -1,12 +1,12 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Apollo} from 'apollo-angular';
 import gql from 'graphql-tag';
 import {ApolloQueryResult} from 'apollo-client';
-import {Observable} from 'rxjs';
 import {ITestimony} from '../../interfaces/testimony.interface';
-import {map, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import {OwlOptions} from 'ngx-owl-carousel-o';
 import {IBlogArticle} from '../../interfaces/blog-article.interface';
+import {BlogItemsService} from '../../shared/services/blog-items.service';
 
 const GET_TESTIMONIES = gql`
     query GetTestimonies {
@@ -17,19 +17,6 @@ const GET_TESTIMONIES = gql`
         published
       }
     }
-`;
-
-const GET_BLOG_ARTICLES_FOR_HOME = gql`
-  query GetBlogArticlesForHome {
-    blogArticles(limit: 3, onlyPublished: true) {
-      title,
-      summary,
-      images,
-      slug,
-      createdAt,
-      published
-    }
-  }
 `;
 
 @Component({
@@ -107,7 +94,8 @@ export class HomeComponent implements OnInit {
   blogArticlesLoading: boolean;
 
   constructor(
-    private apollo: Apollo
+    private apollo: Apollo,
+    private blogItemsService: BlogItemsService
   ) { }
 
   ngOnInit(): void {
@@ -124,9 +112,7 @@ export class HomeComponent implements OnInit {
       this.testimonies = testimonies;
     });
 
-    this.apollo.watchQuery({
-      query: GET_BLOG_ARTICLES_FOR_HOME
-    }).valueChanges.pipe(
+    this.blogItemsService.getBlogArticlesForHome().valueChanges.pipe(
       map((result: ApolloQueryResult<any>) => ({
         blogArticles: result.data.blogArticles,
         loading: result.loading,
@@ -135,8 +121,6 @@ export class HomeComponent implements OnInit {
     ).subscribe(({ blogArticles, loading, errors}) => {
       this.blogArticlesLoading = loading;
       this.blogArticles = blogArticles;
-      console.log('articles', this.blogArticles);
-      console.log('loading', this.blogArticlesLoading);
     })
   }
 
