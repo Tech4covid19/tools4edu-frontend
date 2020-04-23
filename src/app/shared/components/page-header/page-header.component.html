@@ -1,7 +1,7 @@
 <div class="t4e-page-header" [ngClass]="isInnerPage ? 'inner' : ''" [ngStyle]="{backgroundImage: 'url(' + backgroundImage + ')'}">
   <div class="text-wrapper">
-    <button (click)="goBack()" *ngIf="isInnerPage">{{backLabel}}</button>
+    <button (click)="goBack()" *ngIf="backLabel !== ''">{{backLabel}}</button>
     <h1>{{title}}</h1>
-    <p *ngIf="!isInnerPage" [innerHTML]="description"></p>
+    <p *ngIf="description !== ''" [innerHTML]="description"></p>
   </div>
 </div>

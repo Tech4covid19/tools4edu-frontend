@@ -1,1 +1,23 @@
-<p>blog-detail works!</p>
+<t4e-page-header
+  [isInnerPage]="false"
+  backLabel="< VOLTAR PARA O BLOG"
+  backUrl="/blog"
+  backgroundImage="assets/pages/blog/header-bg.png"
+  [title]="blogArticle.title"
+  [description]="getHeaderDescription()"
+></t4e-page-header>
+<section class="t4e-blog-article">
+  <div class="content__image"
+       *ngIf="blogArticle.images && blogArticle.images[0]"
+       [ngStyle]="{ backgroundImage: 'url('+blogArticle.images[0]+')'}"
+  ></div>
+  <div class="content__info">
+    <div class="block" *ngFor="let block of blogArticleInfoBlocks">
+      <div class="block__title">{{block.title}}</div>
+      <div class="block__value">{{block.value}}</div>
+    </div>
+  </div>
+  <div class="content__text">
+    <div class="text" [innerHTML]="blogArticle.text"></div>
+  </div>
+</section>

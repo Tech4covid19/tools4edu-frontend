@@ -23,7 +23,7 @@
 
   .text-wrapper {
     @include containerPadding();
-    max-width: 840px;
+    //max-width: 840px;
 
     button {
       @include font('button');
@@ -46,6 +46,7 @@
       @include font('bodyTextLarge');
       color: #FFF;
       margin: 0;
+      max-width: 840px;
 
       ::ng-deep {
         a {
