@@ -3,7 +3,7 @@ import {AppService} from '../../app.service';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {IFilters} from '../../shared/components/filters/interfaces/filters.interface';
-import {Apollo, QueryRef} from 'apollo-angular';
+import {QueryRef} from 'apollo-angular';
 import {IContentItem} from '../../interfaces/content-item.interface';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ContentItemsService} from '../../shared/services/content-items.service';
@@ -33,7 +33,6 @@ export class ContentComponent implements OnInit {
 
   constructor(
     private appService: AppService,
-    private apollo: Apollo,
     private activatedRoute: ActivatedRoute,
     private contentItemsService: ContentItemsService,
     private router: Router

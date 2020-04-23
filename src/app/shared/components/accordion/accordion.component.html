@@ -1,0 +1,14 @@
+<div class="t4e-accordion" [ngClass]="open ? 'open' : ''" (click)="toggle()">
+  <div class="t4e-accordion__question">
+<!--    <span class="number">{{faqItem.order}}.</span>-->
+    <div class="content" [innerHTML]="faqItem.question"></div>
+    <span class="caret">
+      <svg width="16" height="8" viewBox="0 0 16 8" fill="#FFF" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 0.999999L8 7L15 1" stroke="#1F3F68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </div>
+  <div class="t4e-accordion__answer">
+    <div class="content" [innerHTML]="faqItem.answer"></div>
+  </div>
+</div>

@@ -1,1 +1,102 @@
-<p>faqs works!</p>
+<t4e-page-header
+  backgroundImage="assets/pages/faqs/header-bg.png"
+  title="Dúvidas mais frequentes"
+  [description]="'Encontre aqui resposta às dúvidas mais frequentes. Se, ainda assim, necessitar de ajuda, por favor contacte-nos enviando um email para <a href=\'mailto:ajuda@tools4edu.com\'>ajuda@tools4edu.com</a>'"
+></t4e-page-header>
+<div class="t4e-faqs-page">
+  <aside class="t4e-content-filters">
+    <div class="sticky-filters">
+      <t4e-filters
+        title="FAQ's para"
+        [fields]="stakeholderFields$"
+        [selectedFilters]="selectedStakeholders$"
+        (onSelectFields)="selectedStakeholders$.next($event)"
+      ></t4e-filters>
+
+      <t4e-filters
+        title="FAQ's por Plataforma"
+        [fields]="providerFields$"
+        [selectedFilters]="selectedProviders$"
+        (onSelectFields)="selectedProviders$.next($event)"
+      ></t4e-filters>
+
+      <div class="results-panel">
+        <div class="results-panel__title">Resultados</div>
+        <div class="results-panel__text">Temos <span>{{faqItems.length}}</span> items do seu interesse de acordo com a sua pesquisa</div>
+        <button class="results-panel__clear-btn" (click)="clearFilters()">
+          <span>Limpar todos os filtros</span>
+          <i>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.45935 6.56118L7.45935 1.2844C7.45935 1.01923 7.27373 0.833617 7.00857 0.833617C6.7434 0.833617 6.55779 1.01923 6.55779 1.2844V6.56118L1.281 6.5877C1.0291 6.57444 0.830221 6.77331 0.84348 7.02522C0.856738 7.27713 1.0291 7.476 1.29426 7.476L6.55779 7.46274L6.55779 12.7395C6.55779 13.0047 6.7434 13.1903 7.00857 13.1903C7.12789 13.1771 7.23396 13.1505 7.32676 13.0577C7.41957 12.9649 7.45935 12.8721 7.45935 12.7395L7.47261 7.44949L12.7494 7.42297C12.8687 7.40971 13.0013 7.35668 13.0676 7.29039C13.1339 7.2241 13.2002 7.10477 13.2002 6.97219C13.2002 6.70702 13.0146 6.52141 12.7494 6.52141L7.45935 6.56118Z" fill="white"/>
+            </svg>
+          </i>
+        </button>
+      </div>
+    </div>
+  </aside>
+  <section class="t4e-faq-items">
+    <div class="t4e-filter-drawer-opener">
+      <button (click)="openFilterDrawer()">
+        <span>SELECCIONAR FILTROS ({{totalSelectedFilters}})</span>
+        <i>
+          <svg width="21" height="8" viewBox="0 0 21 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M1 0C0.447708 0 0 0.447715 0 1C0 1.55228 0.447708 2 1 2H20C20.5523 2 21 1.55228 21 1C21 0.447715 20.5523 0 20 0H1ZM1 6C0.447708 6 0 6.44772 0 7C0 7.55228 0.447708 8 1 8H20C20.5523 8 21 7.55228 21 7C21 6.44772 20.5523 6 20 6H1Z" fill="white"/>
+          </svg>
+        </i>
+      </button>
+    </div>
+
+    <t4e-accordion
+      *ngFor="let faqItem of faqItemList"
+      [faqItem]="faqItem"
+    ></t4e-accordion>
+
+    <div class="current-results" *ngIf="faqItemList.length > 0">
+      <button class="show-more-btn" (click)="handleShowMore()">
+        <span>MOSTRAR MAIS</span>
+        <i>
+          <svg width="16" height="8" viewBox="0 0 16 8" fill="#5A98D0" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 0.999999L8 7L15 1" stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </i>
+      </button>
+      <div class="content">
+        A mostrar <strong>{{currentResultCount}}</strong> de <strong>{{totalResultCount}}</strong> perguntas.
+      </div>
+    </div>
+
+  </section>
+  <t4e-filter-drawer
+    [isOpened]="filterDrawerOpened"
+    (onClose)="filterDrawerOpened = false"
+  >
+
+    <t4e-filters
+      title="FAQ's para"
+      [fields]="stakeholderFields$"
+      [selectedFilters]="selectedStakeholders$"
+      (onSelectFields)="selectedStakeholders$.next($event)"
+    ></t4e-filters>
+
+    <t4e-filters
+      title="FAQ's por Plataforma"
+      [fields]="providerFields$"
+      [selectedFilters]="selectedProviders$"
+      (onSelectFields)="selectedProviders$.next($event)"
+    ></t4e-filters>
+
+    <div class="results-panel">
+      <div class="results-panel__title">Resultados</div>
+      <div class="results-panel__text">Temos <span>{{faqItems.length}}</span> items do seu interesse de acordo com a sua pesquisa</div>
+      <button class="results-panel__clear-btn" (click)="clearFilters()">
+        <span>Limpar todos os filtros</span>
+        <i>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.45935 6.56118L7.45935 1.2844C7.45935 1.01923 7.27373 0.833617 7.00857 0.833617C6.7434 0.833617 6.55779 1.01923 6.55779 1.2844V6.56118L1.281 6.5877C1.0291 6.57444 0.830221 6.77331 0.84348 7.02522C0.856738 7.27713 1.0291 7.476 1.29426 7.476L6.55779 7.46274L6.55779 12.7395C6.55779 13.0047 6.7434 13.1903 7.00857 13.1903C7.12789 13.1771 7.23396 13.1505 7.32676 13.0577C7.41957 12.9649 7.45935 12.8721 7.45935 12.7395L7.47261 7.44949L12.7494 7.42297C12.8687 7.40971 13.0013 7.35668 13.0676 7.29039C13.1339 7.2241 13.2002 7.10477 13.2002 6.97219C13.2002 6.70702 13.0146 6.52141 12.7494 6.52141L7.45935 6.56118Z" fill="white"/>
+          </svg>
+        </i>
+      </button>
+    </div>
+
+  </t4e-filter-drawer>
+</div>

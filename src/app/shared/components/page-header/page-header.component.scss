@@ -46,6 +46,13 @@
       @include font('bodyTextLarge');
       color: #FFF;
       margin: 0;
+
+      ::ng-deep {
+        a {
+          @include font('bodyTextLargeHighlight');
+          color: #FFF;
+        }
+      }
     }
   }
 

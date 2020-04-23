@@ -24,6 +24,7 @@ export class FiltersComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() title: string;
   @Input() fields: Observable<IFilters>;
+  @Input() initialFilters: string[];
   @Input() selectedFilters: BehaviorSubject<string[]>;
   @Output() onSelectFields: EventEmitter<string[]> = new EventEmitter<string[]>();
 
@@ -68,11 +69,13 @@ export class FiltersComponent implements OnInit, OnChanges, OnDestroy {
 
   toggleFieldValue(index: number, newValue: string) {
     const currentValue = this.filterControls[index].value;
+    const currentSelectedFiltersObs = this.selectedFilters.getValue();
+    const selectedFilters = this.filterForm.value.filters
+      .map((value, idx) => ( value ? this.filterFields[idx].value : null))
+      .filter(value => value !== null);
 
     (this.filterForm.get('filters') as FormArray).controls[index]
       .setValue(currentValue ? "" : newValue)
-
-
   }
 
   isSelected(itemValue: string) {

@@ -1,0 +1,89 @@
+@import 'theme';
+
+.t4e-accordion {
+  border-radius: 20px;
+  background: #FFFFFF;
+  box-shadow: 5px 20px 50px rgba(90, 152, 208, 0.4);
+  margin-bottom: 16px;
+  padding: 16px 24px;
+  transition: 0.25s ease box-shadow;
+  cursor: pointer;
+  outline: none;
+
+  &__question {
+    display: flex;
+    align-items: flex-start;
+
+    .number {
+      @include font('bodyTextHighlight');
+      font-size: 16px;
+      color: $color-text-blue;
+      margin-right: 4px;
+    }
+    .content {
+      @include font('bodyText');
+      flex: 1;
+      font-size: 16px;
+      color: $color-text-blue;
+      //opacity: 0.6;
+      display: inline-block;
+      margin-right: 6px;
+
+      ::ng-deep {
+        p {
+          margin: 0;
+        }
+      }
+    }
+
+    .caret {
+      margin-left: auto;
+      width: 19px;
+      height: 8px;
+      position: relative;
+      transition: 0.25s ease transform;
+      align-self: center;
+
+      svg {
+        position: absolute;
+        width: 19px;
+        height: 8px;
+      }
+    }
+  }
+
+  &__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 200ms ease;
+
+    .content {
+      margin-top: 12px;
+      @include font('bodyText');
+      font-size: 16px;
+      color: $color-text-blue;
+      opacity: 0.6;
+      display: inline-block;
+
+      ::ng-deep {
+        p {
+          margin: 0 0 6px;
+        }
+      }
+    }
+  }
+
+  &.open {
+    box-shadow: 5px 20px 50px rgba(90, 152, 208, 0.4);
+
+    .caret {
+      transform: rotate(-180deg);
+      transform-origin: center;
+
+    }
+
+    .t4e-accordion__answer {
+      max-height: 500px;
+    }
+  }
+}

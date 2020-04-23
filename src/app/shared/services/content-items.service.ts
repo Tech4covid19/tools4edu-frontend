@@ -83,7 +83,12 @@ export class ContentItemsService {
 
   getContentItems(): QueryRef<any> {
     return this.apollo.watchQuery({
-      query: GET_CONTENT_ITEMS
+      query: GET_CONTENT_ITEMS,
+      variables: {
+        providerIds: [],
+        stakeholderIds: [],
+        tagIds: []
+      }
     })
   }
 

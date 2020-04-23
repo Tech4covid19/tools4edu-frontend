@@ -1,0 +1,177 @@
+@import 'theme';
+
+.t4e-faqs-page {
+  margin-top: 60px;
+  margin-bottom: 120px;
+
+  @include containerPadding();
+
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas: 'filters faq-items';
+  grid-column-gap: 110px;
+
+  @include media-desktop-sm {
+    grid-column-gap: 55px;
+  }
+
+  @include media-laptop {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'content-items';
+    grid-column-gap: 0;
+  }
+
+  .t4e-content-filters {
+    grid-area: filters;
+
+    ::ng-deep {
+      .filters-wrapper {
+        margin-bottom: 60px;
+
+        &__title {
+          margin-bottom: 16px;
+        }
+        &__content {
+          .filter-item {
+            margin-bottom: 8px;
+          }
+        }
+      }
+    }
+
+    .results-panel {
+      &__title {
+        @include font('bodyTextLargeHighlight', 130%);
+        color: $color-text-blue;
+        letter-spacing: 0.005em;
+        margin-bottom: 16px;
+      }
+
+      &__text {
+        @include font('bodyText');
+        color: $color-text-blue;
+        margin-bottom: 40px;
+
+        span {
+          @include font('bodyTextHighlight');
+        }
+      }
+
+      &__clear-btn {
+        background-color: lighten($color-red, 40%);
+        display: flex;
+        box-shadow: 0 5px 5px rgba(75, 93, 104, 0.1);
+        border-radius: 20px;
+        padding: 8px 16px;
+        min-width: 236px;
+        outline: none;
+        justify-content: flex-start;
+        align-items: center;
+        cursor: pointer;
+
+        span {
+          @include font('button');
+          color: $color-red;
+          text-transform: uppercase;
+        }
+
+        i {
+          background-color: $color-red;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: auto;
+          transform: rotate(45deg);
+          box-shadow: 0px 5px 5px rgba(75, 93, 104, 0.1);
+        }
+      }
+    }
+
+    @include media-laptop {
+      display: none;
+    }
+  }
+
+  .t4e-faq-items {
+    grid-area: faq-items;
+
+    display: flex;
+    flex-direction: column;
+
+    .current-results {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 60px;
+
+      .show-more-btn {
+        @include font('button');
+        color: #FFF;
+        background-color: $color-primary-blue;
+        padding: 16px 24px;
+        box-shadow: 0 5px 5px rgba(75, 93, 104, 0.1);
+        border-radius: 50px;
+        outline: none;
+
+        span {
+          margin-right: 16px;
+        }
+      }
+
+      .content {
+        @include font('bodyText');
+        font-size: 16px;
+        color: $color-text-blue;
+        strong {
+          @include font('bodyTextHighlight');
+          font-size: 16px;
+          color: $color-text-blue;
+        }
+      }
+    }
+
+  }
+
+  .t4e-filter-drawer-opener {
+    display: none;
+    grid-column: 1 / span 2;
+    width: 100%;
+    margin-bottom: 24px;
+
+    @include media-tablet {
+      grid-column: 1;
+    }
+
+    button {
+      box-shadow: 0px 5px 5px rgba(75, 93, 104, 0.1);
+      background: $color-primary-blue;
+      border-radius: 50px;
+      padding: 16px 24px;
+      width: 95%;
+      display: flex;
+      justify-content: flex-start;
+
+      span {
+        @include font('button');
+        color: #FFF;
+      }
+
+      i {
+        margin-left: auto;
+        svg {
+          width: 21px;
+          height: 8px;
+        }
+      }
+    }
+
+    @include media-laptop {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
