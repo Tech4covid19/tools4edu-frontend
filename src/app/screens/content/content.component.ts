@@ -62,6 +62,10 @@ export class ContentComponent implements OnInit {
       if (result.stakeholder) {
         this.selectedStakeholders$.next([result.stakeholder])
       }
+
+      if (result.tag) {
+        this.selectedTags$.next([result.tag])
+      }
     })
 
     combineLatest(
@@ -77,10 +81,6 @@ export class ContentComponent implements OnInit {
         ]
       })
     ).subscribe(([providerIds, stakeholderIds, tagIds]) => {
-      console.log('providerIds', providerIds);
-      console.log('stakeholderIds', stakeholderIds);
-      console.log('tagIds', tagIds);
-
       this.totalSelectedFilters = providerIds.length + stakeholderIds.length + tagIds.length;
 
       this.contentItemsQueryRef.refetch({
