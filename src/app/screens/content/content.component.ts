@@ -5,7 +5,7 @@ import {map} from 'rxjs/operators';
 import {IFilters} from '../../shared/components/filters/interfaces/filters.interface';
 import {Apollo, QueryRef} from 'apollo-angular';
 import {IContentItem} from '../../interfaces/content-item.interface';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ContentItemsService} from '../../shared/services/content-items.service';
 
 @Component({
@@ -35,7 +35,8 @@ export class ContentComponent implements OnInit {
     private appService: AppService,
     private apollo: Apollo,
     private activatedRoute: ActivatedRoute,
-    private contentItemsService: ContentItemsService
+    private contentItemsService: ContentItemsService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -94,6 +95,18 @@ export class ContentComponent implements OnInit {
 
   openFilterDrawer() {
     this.filterDrawerOpened = true;
+  }
+
+  clearFilters() {
+    // Remove Query Params
+    this.router.navigate(
+      ['.'],
+      { relativeTo: this.activatedRoute, queryParams: {} }
+    ).then(() => {
+      this.selectedTags$.next([])
+      this.selectedStakeholders$.next([])
+      this.selectedProviders$.next([]);
+    });
   }
 
 }

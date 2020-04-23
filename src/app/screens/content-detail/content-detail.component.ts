@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {IContentItem} from '../../interfaces/content-item.interface';
-import {IPillItem} from '../../interfaces/pill-item.interface';
 
 @Component({
   selector: 't4e-content-detail',
@@ -13,7 +12,6 @@ export class ContentDetailComponent implements OnInit {
   contentItem: IContentItem
   loading: boolean;
   contentInfoBlocks: Array<{ title: string, value: string }> = [];
-  tagPills: Array<IPillItem> = [];
 
   constructor(
     private route: ActivatedRoute
@@ -24,32 +22,9 @@ export class ContentDetailComponent implements OnInit {
       this.loading = queryResult.data.loading;
       this.contentItem = queryResult.data.contentItem;
       this.contentInfoBlocks = this.getContentInfoBlocks();
-      this.tagPills = [];
-      if (this.contentItem.stakeholder) {
-        this.tagPills.push({
-            title: this.contentItem.stakeholder?.title,
-            actionType: 'NAVIGATE',
-            actionValue: '/conteudo?stakeholder='+this.contentItem.stakeholder?.id
-        });
-      }
-      if (this.contentItem.provider) {
-        this.tagPills.push({
-          title: this.contentItem.provider?.title,
-          actionType: 'NAVIGATE',
-          actionValue: '/conteudo?provider='+this.contentItem.provider?.id
-        })
-      }
-      if (this.contentItem.tags) {
-        this.tagPills.push({
-          title: this.contentItem.tags[0]?.title,
-          actionType: 'NAVIGATE',
-          actionValue: '/conteudo?tag='+this.contentItem.tags[0]?.id
-        })
-      }
     })
-
-
   }
+
   getBackgroundHeader(): string {
     if (this.contentItem.stakeholder) {
       switch(this.contentItem.stakeholder.code) {

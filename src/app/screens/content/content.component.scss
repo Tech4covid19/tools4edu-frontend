@@ -68,6 +68,7 @@
         outline: none;
         justify-content: flex-start;
         align-items: center;
+        cursor: pointer;
 
         span {
           @include font('button');
