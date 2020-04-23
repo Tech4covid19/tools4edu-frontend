@@ -8,6 +8,8 @@ import {AboutComponent} from './screens/about/about.component';
 import {PrivacyComponent} from './screens/privacy/privacy.component';
 import {ContentDetailComponent} from './screens/content-detail/content-detail.component';
 import {ContentItemResolver} from './shared/resolvers/content-item.resolver';
+import {BlogDetailComponent} from './screens/blog-detail/blog-detail.component';
+import {BlogItemResolver} from './shared/resolvers/blog-item.resolver';
 
 
 const routes: Routes = [
@@ -15,6 +17,7 @@ const routes: Routes = [
   { path: 'conteudo', component: ContentComponent },
   { path: 'conteudo/:slug', component: ContentDetailComponent, resolve: { queryResult: ContentItemResolver } },
   { path: 'blog', component: BlogComponent },
+  { path: 'blog/:slug', component: BlogDetailComponent, resolve: { queryResult: BlogItemResolver } },
   { path: 'faqs', component: FaqsComponent },
   { path: 'sobre', component: AboutComponent },
   { path: 'privacidade', component: PrivacyComponent }

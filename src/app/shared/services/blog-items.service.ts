@@ -1,6 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Apollo} from 'apollo-angular';
 import gql from 'graphql-tag';
+import {Observable} from 'rxjs';
+import {ApolloQueryResult} from 'apollo-client';
+import {IBlogArticle} from '../../interfaces/blog-article.interface';
 
 const GET_BLOG_ARTICLES = gql`
   query GetBlogArticles(
@@ -11,6 +14,26 @@ const GET_BLOG_ARTICLES = gql`
       limit: $limit,
       startAt: $startAt,
       onlyPublished: true
+    ) {
+      id,
+      title,
+      summary,
+      author,
+      images,
+      text,
+      slug,
+      published,
+      createdAt
+    }
+  }
+`;
+
+const GET_BLOG_ARTICLE = gql`
+  query GetBlogArticle(
+    $slug: String!
+  ) {
+    blogArticle(
+      slug: $slug
     ) {
       id,
       title,
@@ -42,6 +65,15 @@ export class BlogItemsService {
       query: GET_BLOG_ARTICLES,
       variables: {
         limit: 3
+      }
+    })
+  }
+
+  getBlogArticle(slug: string): Observable<ApolloQueryResult<IBlogArticle>> {
+    return this.apollo.query({
+      query: GET_BLOG_ARTICLE,
+      variables: {
+        slug
       }
     })
   }

@@ -18,6 +18,7 @@ import {PrivacyComponent} from './screens/privacy/privacy.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppService} from './app.service';
 import {ContentDetailComponent} from './screens/content-detail/content-detail.component';
+import {BlogDetailComponent} from './screens/blog-detail/blog-detail.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {ContentDetailComponent} from './screens/content-detail/content-detail.co
     FaqsComponent,
     AboutComponent,
     PrivacyComponent,
-    ContentDetailComponent
+    ContentDetailComponent,
+    BlogDetailComponent
   ],
   imports: [
     BrowserModule,

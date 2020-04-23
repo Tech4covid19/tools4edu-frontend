@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {IBlogArticle} from '../../../interfaces/blog-article.interface';
 
 @Component({
   selector: 't4e-blog-article-card',
@@ -7,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class BlogArticleCardComponent implements OnInit {
 
-  @Input() cardData: any;
+  @Input() cardData: IBlogArticle;
 
   constructor() { }
 
