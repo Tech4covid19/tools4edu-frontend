@@ -286,6 +286,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
+    grid-column-gap: 24px;
 
     @include media-desktop-sm {
       grid-template-columns: repeat(2, 1fr);
