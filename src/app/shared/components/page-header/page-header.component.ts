@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
   templateUrl: './page-header.component.html',
   styleUrls: ['./page-header.component.scss']
 })
-export class PageHeaderComponent implements OnInit {
+export class PageHeaderComponent {
 
   @Input() isInnerPage: boolean;
   @Input() backgroundImage: string;
@@ -19,9 +19,6 @@ export class PageHeaderComponent implements OnInit {
   constructor(
     private router: Router
   ) { }
-
-  ngOnInit(): void {
-  }
 
   goBack() {
     this.router.navigate([this.backUrl]);

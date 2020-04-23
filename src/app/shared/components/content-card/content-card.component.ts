@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {IContentItem} from '../../../interfaces/content-item.interface';
 
 @Component({
@@ -6,15 +6,11 @@ import {IContentItem} from '../../../interfaces/content-item.interface';
   templateUrl: './content-card.component.html',
   styleUrls: ['./content-card.component.scss']
 })
-export class ContentCardComponent implements OnInit {
+export class ContentCardComponent {
 
   @Input() contentItem: IContentItem = {};
 
   constructor() { }
-
-  ngOnInit(): void {
-
-  }
 
   getProviderImage() {
     switch(this.contentItem.provider.code) {

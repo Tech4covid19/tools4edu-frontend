@@ -1,7 +1,8 @@
-import {Component, ElementRef, Input, OnChanges, OnInit, Renderer2, SimpleChanges, ViewChild} from '@angular/core';
-import { MediaObserver } from '@angular/flex-layout';
+import {Component, ElementRef, Input, OnChanges, Renderer2, SimpleChanges, ViewChild} from '@angular/core';
+import {MediaObserver} from '@angular/flex-layout';
 import {fromEvent} from 'rxjs';
 import {auditTime} from 'rxjs/operators';
+
 declare const MediaElementPlayer: any;
 
 @Component({
@@ -9,12 +10,12 @@ declare const MediaElementPlayer: any;
   templateUrl: './media-player.component.html',
   styleUrls: ['./media-player.component.scss']
 })
-export class MediaPlayerComponent implements OnInit, OnChanges {
+export class MediaPlayerComponent implements OnChanges {
 
   @Input() videoUrl: string;
   @Input() videoPoster: string;
 
-  @ViewChild('mediaPlayerElement') mediaPlayerElement: ElementRef
+  @ViewChild('mediaPlayerElement') mediaPlayerElement: ElementRef;
 
   mediaPlayer: any;
 
@@ -26,31 +27,27 @@ export class MediaPlayerComponent implements OnInit, OnChanges {
     private renderer: Renderer2
   ) {
     mediaObserver.media$.subscribe(el => {
-      this.width = Number(el.mediaQuery.split('max-width:')[1].split('px)')[0])
-    })
-  }
-
-  ngOnInit(): void {
+      this.width = Number(el.mediaQuery.split('max-width:')[1].split('px)')[0]);
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.videoUrl) {
       setTimeout(() => {
-        this.loader()
+        this.loader();
       }, 0);
     }
   }
 
   loader() {
     this.loadMediaPlayer();
-    fromEvent(window, "resize")
+    fromEvent(window, 'resize')
       .pipe(auditTime(100))
       .subscribe((event: any) => {
-        this.width = event['target'].innerWidth
+        this.width = event['target'].innerWidth;
         this.height = event['target'].innerHeight;
-        this.renderer.setAttribute(this.mediaPlayerElement.nativeElement,'width', this.width.toString())
-        this.renderer.setAttribute(this.mediaPlayerElement.nativeElement,'height', (this.width / 1.77 ).toString())
-        console.log(this.width)
+        this.renderer.setAttribute(this.mediaPlayerElement.nativeElement, 'width', this.width.toString());
+        this.renderer.setAttribute(this.mediaPlayerElement.nativeElement, 'height', (this.width / 1.77).toString());
       });
   }
 

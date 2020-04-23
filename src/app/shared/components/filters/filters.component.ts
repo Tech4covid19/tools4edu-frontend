@@ -1,6 +1,4 @@
 import {
-  AfterViewChecked,
-  AfterViewInit,
   Component,
   EventEmitter,
   Input,
@@ -13,7 +11,6 @@ import {
 import {IFilterField, IFilters} from './interfaces/filters.interface';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 't4e-filters',

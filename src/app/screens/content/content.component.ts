@@ -54,7 +54,6 @@ export class ContentComponent implements OnInit {
     });
 
     this.activatedRoute.queryParams.subscribe((result) => {
-      console.log('params', result)
       if (result.provider) {
         this.selectedProviders$.next([result.provider])
       }

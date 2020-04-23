@@ -1,20 +1,17 @@
-import {Component, OnInit, Renderer2} from '@angular/core';
+import {Component, Renderer2} from '@angular/core';
 
 @Component({
   selector: 't4e-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
   drawerOpened: boolean;
 
   constructor(
     private renderer: Renderer2
   ) { }
-
-  ngOnInit(): void {
-  }
 
   toggleDrawer() {
     this.drawerOpened = !this.drawerOpened;

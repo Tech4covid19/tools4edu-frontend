@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, Renderer2, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, Renderer2, SimpleChanges} from '@angular/core';
 
 @Component({
   selector: 't4e-filter-drawer',

@@ -80,8 +80,6 @@ export class ContentDetailComponent implements OnInit {
   getContentInfoBlocks(): Array<{ title: string, value: string }> {
     let infoBlocks = [];
 
-    console.log('type', this.contentItem.type)
-
     switch(this.contentItem.type) {
       case 'CONTENT-TUTORIAL-VIDEO':
         infoBlocks.push({ title: 'Conteúdo', value: 'Vídeo' })
