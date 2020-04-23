@@ -26,9 +26,10 @@
     grid-area: filters;
 
     .sticky-filters {
-      position: -webkit-sticky;
-      position: sticky;
-      top: 60px;
+      //position: -webkit-sticky;
+      //position: sticky;
+      //top: 20px;
+      //overflow: auto;
     }
 
     ::ng-deep {
