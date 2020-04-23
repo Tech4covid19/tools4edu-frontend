@@ -73,29 +73,31 @@
 <section class="t4e-section t4e-section-blog-articles">
   <h2 class="t4e-section__title">BLOG</h2>
   <div class="blog-articles-wrapper">
-    <div class="blog-articles-container__desktop">
+    <div class="blog-articles-container">
       <ng-container *ngIf="!blogArticlesLoading">
         <ng-container *ngFor="let article of blogArticles">
           <t4e-blog-article-card [cardData]="article"></t4e-blog-article-card>
         </ng-container>
       </ng-container>
     </div>
-    <div class="blog-articles-container__mobile">
-      <owl-carousel-o *ngIf="!blogArticlesLoading" [options]="blogCarouselOptions">
-        <ng-container *ngFor="let article of blogArticles">
-          <ng-template carouselSlide>
-            <t4e-blog-article-card [cardData]="article"></t4e-blog-article-card>
-          </ng-template>
-        </ng-container>
-      </owl-carousel-o>
-    </div>
-    <div class="loading-container" *ngIf="blogArticlesLoading">
-      <ngx-skeleton-loader count="3"></ngx-skeleton-loader>
-      <ngx-skeleton-loader count="3"></ngx-skeleton-loader>
-      <ngx-skeleton-loader count="3"></ngx-skeleton-loader>
-    </div>
   </div>
 </section>
+<!--    <div class="blog-articles-container__mobile">-->
+<!--      <owl-carousel-o *ngIf="!blogArticlesLoading" [options]="blogCarouselOptions">-->
+<!--        <ng-container *ngFor="let article of blogArticles">-->
+<!--          <ng-template carouselSlide>-->
+<!--            <t4e-blog-article-card [cardData]="article"></t4e-blog-article-card>-->
+<!--          </ng-template>-->
+<!--        </ng-container>-->
+<!--      </owl-carousel-o>-->
+<!--    </div>-->
+<!--    <div class="loading-container" *ngIf="blogArticlesLoading">-->
+<!--      <ngx-skeleton-loader count="3"></ngx-skeleton-loader>-->
+<!--      <ngx-skeleton-loader count="3"></ngx-skeleton-loader>-->
+<!--      <ngx-skeleton-loader count="3"></ngx-skeleton-loader>-->
+<!--    </div>-->
+<!--  </div>-->
+
 <section class="t4e-section t4e-section-platforms">
   <h2 class="t4e-section__title">PLATAFORMAS</h2>
   <div class="platforms-wrapper">

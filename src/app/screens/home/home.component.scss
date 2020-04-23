@@ -256,15 +256,14 @@
 
 
     .blog-articles-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      justify-items: center;
+      grid-column-gap: 24px;
 
-      &__desktop {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        justify-items: center;
-
-        @include media-desktop-sm {
-          display: none;
-        }
+      @include media-laptop {
+        grid-template-columns: 1fr;
+        grid-row-gap: 32px;
       }
 
       &__mobile {

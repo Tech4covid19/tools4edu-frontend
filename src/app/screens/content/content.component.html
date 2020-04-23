@@ -6,22 +6,23 @@
 <div class="t4e-content-page">
   <aside class="t4e-content-filters">
     <div class="sticky-filters">
-    <t4e-filters
-      title="Providers"
-      [fields]="providerFields$"
-      [selectedFilters]="selectedProviders$"
-      (onSelectFields)="selectedProviders$.next($event)"
-    ></t4e-filters>
 
     <t4e-filters
-      title="Stakeholders"
+      title="Conteúdos para"
       [fields]="stakeholderFields$"
       [selectedFilters]="selectedStakeholders$"
       (onSelectFields)="selectedStakeholders$.next($event)"
     ></t4e-filters>
 
     <t4e-filters
-      title="Tags"
+      title="Plataformas"
+      [fields]="providerFields$"
+      [selectedFilters]="selectedProviders$"
+      (onSelectFields)="selectedProviders$.next($event)"
+    ></t4e-filters>
+
+    <t4e-filters
+      title="Por temáticas"
       [fields]="tagFields$"
       [selectedFilters]="selectedTags$"
       (onSelectFields)="selectedTags$.next($event)"
@@ -65,22 +66,23 @@
     [isOpened]="filterDrawerOpened"
     (onClose)="filterDrawerOpened = false"
   >
-    <t4e-filters
-      title="Providers"
-      [fields]="providerFields$"
-      [selectedFilters]="selectedProviders$"
-      (onSelectFields)="selectedProviders$.next($event)"
-    ></t4e-filters>
 
     <t4e-filters
-      title="Stakeholders"
+      title="Conteúdos para"
       [fields]="stakeholderFields$"
       [selectedFilters]="selectedStakeholders$"
       (onSelectFields)="selectedStakeholders$.next($event)"
     ></t4e-filters>
 
     <t4e-filters
-      title="Tags"
+      title="Plataformas"
+      [fields]="providerFields$"
+      [selectedFilters]="selectedProviders$"
+      (onSelectFields)="selectedProviders$.next($event)"
+    ></t4e-filters>
+
+    <t4e-filters
+      title="Por temáticas"
       [fields]="tagFields$"
       [selectedFilters]="selectedTags$"
       (onSelectFields)="selectedTags$.next($event)"
