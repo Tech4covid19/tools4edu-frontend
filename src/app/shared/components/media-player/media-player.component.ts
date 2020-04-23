@@ -27,7 +27,6 @@ export class MediaPlayerComponent implements OnInit, OnChanges {
   ) {
     mediaObserver.media$.subscribe(el => {
       this.width = Number(el.mediaQuery.split('max-width:')[1].split('px)')[0])
-      console.log('width', this.width);
     })
   }
 
@@ -38,7 +37,6 @@ export class MediaPlayerComponent implements OnInit, OnChanges {
     if (this.videoUrl) {
       setTimeout(() => {
         this.loader()
-        console.log('videoUrl', this.videoUrl)
       }, 0);
     }
   }
