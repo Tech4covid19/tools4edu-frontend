@@ -25,6 +25,12 @@
   .t4e-content-filters {
     grid-area: filters;
 
+    .sticky-filters {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 60px;
+    }
+
     ::ng-deep {
       .filters-wrapper {
         margin-bottom: 60px;
