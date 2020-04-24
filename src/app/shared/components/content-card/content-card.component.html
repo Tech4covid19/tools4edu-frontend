@@ -1,5 +1,6 @@
 <div [class]="'content-card ' + contentItem.type.toLowerCase()"
      [ngStyle]="{backgroundImage: getBackgroundImage()}"
+     [routerLink]="['/conteudo/' + contentItem.slug]"
 >
   <div class="provider" *ngIf="contentItem.provider">
     <img [class]="'provider-img ' + contentItem.provider.code.toLowerCase()" [src]="'../../../assets/card/' + getProviderImage()" alt="">
