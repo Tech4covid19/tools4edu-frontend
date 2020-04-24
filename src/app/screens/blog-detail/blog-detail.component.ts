@@ -20,6 +20,8 @@ export class BlogDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    window.scroll(0,0);
+
     this.route.data.subscribe(({queryResult}) => {
       this.loading = queryResult.data.loading;
       this.blogArticle = queryResult.data.blogArticle;
