@@ -7,7 +7,7 @@ import {ITestimony} from './interfaces/testimony.interface';
 
 const GET_STAKEHOLDERS = gql`
   query GetStakeholders {
-    stakeholders {
+    stakeholders(onlyPublished: true) {
       id,
       code,
       title,
@@ -19,7 +19,7 @@ const GET_STAKEHOLDERS = gql`
 
 const GET_PROVIDERS = gql`
   query GetProviders {
-    providers {
+    providers(onlyPublished: true) {
       id,
       code,
       title,
@@ -31,7 +31,7 @@ const GET_PROVIDERS = gql`
 
 const GET_TAGS = gql`
   query GetTags {
-    contentTags {
+    contentTags(onlyPublished: true) {
       id,
       code,
       title,
