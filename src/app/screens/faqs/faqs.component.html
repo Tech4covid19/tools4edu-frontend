@@ -7,14 +7,14 @@
   <aside class="t4e-content-filters">
     <div class="sticky-filters">
       <t4e-filters
-        title="FAQ's para"
+        title="Questões para"
         [fields]="stakeholderFields$"
         [selectedFilters]="selectedStakeholders$"
         (onSelectFields)="selectedStakeholders$.next($event)"
       ></t4e-filters>
 
       <t4e-filters
-        title="FAQ's por Plataforma"
+        title="Questões por Plataforma"
         [fields]="providerFields$"
         [selectedFilters]="selectedProviders$"
         (onSelectFields)="selectedProviders$.next($event)"
@@ -51,19 +51,21 @@
       [faqItem]="faqItem"
     ></t4e-accordion>
 
-    <div class="current-results" *ngIf="faqItemList.length > 0">
-      <button class="show-more-btn" (click)="handleShowMore()">
-        <span>MOSTRAR MAIS</span>
-        <i>
-          <svg width="16" height="8" viewBox="0 0 16 8" fill="#5A98D0" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 0.999999L8 7L15 1" stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </i>
-      </button>
-      <div class="content">
-        A mostrar <strong>{{currentResultCount}}</strong> de <strong>{{totalResultCount}}</strong> perguntas.
+    <ng-container *ngIf="currentResultCount < totalResultCount">
+      <div class="current-results" *ngIf="faqItemList.length > 0">
+        <button class="show-more-btn" (click)="handleShowMore()">
+          <span>MOSTRAR MAIS</span>
+          <i>
+            <svg width="16" height="8" viewBox="0 0 16 8" fill="#5A98D0" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 0.999999L8 7L15 1" stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </i>
+        </button>
+        <div class="content">
+          A mostrar <strong>{{currentResultCount}}</strong> de <strong>{{totalResultCount}}</strong> perguntas.
+        </div>
       </div>
-    </div>
+    </ng-container>
 
   </section>
   <t4e-filter-drawer
@@ -72,14 +74,14 @@
   >
 
     <t4e-filters
-      title="FAQ's para"
+      title="Questões para"
       [fields]="stakeholderFields$"
       [selectedFilters]="selectedStakeholders$"
       (onSelectFields)="selectedStakeholders$.next($event)"
     ></t4e-filters>
 
     <t4e-filters
-      title="FAQ's por Plataforma"
+      title="Questões por Plataforma"
       [fields]="providerFields$"
       [selectedFilters]="selectedProviders$"
       (onSelectFields)="selectedProviders$.next($event)"
