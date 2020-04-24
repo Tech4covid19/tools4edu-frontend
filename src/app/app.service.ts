@@ -67,7 +67,8 @@ export class AppService {
           .map(s => {
             return {
               name: s.title,
-              value: s.id
+              value: s.id,
+              order: s.order
             }
           }),
         loading: result.loading,
@@ -98,7 +99,8 @@ export class AppService {
           .map(p => {
             return {
               name: p.title,
-              value: p.id
+              value: p.id,
+              order: p.order
             }
           }),
         loading: result.loading,
@@ -129,7 +131,8 @@ export class AppService {
           .map(ct => {
             return {
               name: ct.title,
-              value: ct.id
+              value: ct.id,
+              order: ct.order
             }
           })
         ,
