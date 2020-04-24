@@ -20,12 +20,11 @@ export class BlogDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.ga.recordPageView(this.blogArticle.title, `/blog/${this.blogArticle.slug}`)
-
     this.route.data.subscribe(({queryResult}) => {
       this.loading = queryResult.data.loading;
       this.blogArticle = queryResult.data.blogArticle;
       this.blogArticleInfoBlocks = this.getBlogArticleInfoBlocks();
+      this.ga.recordPageView(this.blogArticle.title, `/blog/${this.blogArticle.slug}`)
     })
   }
 
