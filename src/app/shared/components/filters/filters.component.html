@@ -4,6 +4,7 @@
       <button
         class="filter-item"
         *ngFor="let filter of filterFields; let i = index"
+        [ngStyle]="{order: filter.order ? filter.order : 0}"
         [ngClass]="{'selected': isSelected(filter.value)}"
         (click)="toggleFieldValue(i, filter.value)">
         <span>{{filter.name}}</span>

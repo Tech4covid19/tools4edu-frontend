@@ -7,5 +7,6 @@ export interface IFilters {
 export interface IFilterField {
   name: string,
   value: string,
-  selected?: boolean
+  selected?: boolean,
+  order: number
 }
