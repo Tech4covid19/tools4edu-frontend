@@ -7,6 +7,7 @@ import {map} from 'rxjs/operators';
 import {OwlOptions} from 'ngx-owl-carousel-o';
 import {IBlogArticle} from '../../interfaces/blog-article.interface';
 import {BlogItemsService} from '../../shared/services/blog-items.service';
+import {GoogleAnalyticsService} from '../../shared/services/google-analytics.service';
 
 const GET_TESTIMONIES = gql`
     query GetTestimonies {
@@ -95,10 +96,13 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private apollo: Apollo,
-    private blogItemsService: BlogItemsService
+    private blogItemsService: BlogItemsService,
+    private ga: GoogleAnalyticsService
   ) { }
 
   ngOnInit(): void {
+    this.ga.recordPageView('Home', '/');
+
     this.apollo.watchQuery({
       query: GET_TESTIMONIES
     }).valueChanges.pipe(

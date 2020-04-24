@@ -7,6 +7,7 @@ import {QueryRef} from 'apollo-angular';
 import {IContentItem} from '../../interfaces/content-item.interface';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ContentItemsService} from '../../shared/services/content-items.service';
+import {GoogleAnalyticsService} from '../../shared/services/google-analytics.service';
 
 @Component({
   selector: 't4e-content',
@@ -35,10 +36,13 @@ export class ContentComponent implements OnInit {
     private appService: AppService,
     private activatedRoute: ActivatedRoute,
     private contentItemsService: ContentItemsService,
-    private router: Router
+    private router: Router,
+    private ga: GoogleAnalyticsService
   ) { }
 
   ngOnInit(): void {
+    this.ga.recordPageView('Conteudos', '/conteudo');
+
     window.scroll(0,0);
 
     this.providerFields$ = this.appService.getProviderFilterFields()

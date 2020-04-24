@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {IContentItem} from '../../interfaces/content-item.interface';
+import {GoogleAnalyticsService} from '../../shared/services/google-analytics.service';
 
 @Component({
   selector: 't4e-content-detail',
@@ -14,13 +15,33 @@ export class ContentDetailComponent implements OnInit {
   contentInfoBlocks: Array<{ title: string, value: string }> = [];
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private ga: GoogleAnalyticsService
   ) { }
 
   ngOnInit(): void {
+
     this.route.data.subscribe(({queryResult}) => {
       this.loading = queryResult.data.loading;
       this.contentItem = queryResult.data.contentItem;
+
+      if (this.contentItem.type === 'CONTENT-TUTORIAL-VIDEO') {
+        if (this.contentItem.stakeholder.code === 'PROFESSOR') {
+          this.ga.recordPageView('Professor', '/professor/' + this.contentItem.slug);
+        }
+
+        if (this.contentItem.stakeholder.code === 'ALUNO') {
+          this.ga.recordPageView('Aluno', '/aluno/' + this.contentItem.slug);
+        }
+
+        if (this.contentItem.stakeholder.code === 'PAIS') {
+          this.ga.recordPageView('Pais', '/pais/' + this.contentItem.slug);
+        }
+
+      } else {
+        this.ga.recordPageView('Conteudos', '/conteudo/' + this.contentItem.slug);
+      }
+
       this.contentInfoBlocks = this.getContentInfoBlocks();
     })
   }

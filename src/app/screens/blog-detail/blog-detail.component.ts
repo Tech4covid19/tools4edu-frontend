@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {IBlogArticle} from '../../interfaces/blog-article.interface';
 import {ActivatedRoute} from '@angular/router';
+import {GoogleAnalyticsService} from '../../shared/services/google-analytics.service';
 
 @Component({
   selector: 't4e-blog-detail',
@@ -14,10 +15,13 @@ export class BlogDetailComponent implements OnInit {
   loading: boolean;
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private ga: GoogleAnalyticsService
   ) { }
 
   ngOnInit(): void {
+    this.ga.recordPageView(this.blogArticle.title, `/blog/${this.blogArticle.slug}`)
+
     this.route.data.subscribe(({queryResult}) => {
       this.loading = queryResult.data.loading;
       this.blogArticle = queryResult.data.blogArticle;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {GoogleAnalyticsService} from '../../shared/services/google-analytics.service';
 
 @Component({
   selector: 't4e-about',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private ga: GoogleAnalyticsService
+  ) { }
 
   ngOnInit(): void {
+    this.ga.recordPageView('Sobre', '/sobre');
   }
 
 }

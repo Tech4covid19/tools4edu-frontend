@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {IBlogArticle} from '../../interfaces/blog-article.interface';
 import {BlogItemsService} from '../../shared/services/blog-items.service';
 import {QueryRef} from 'apollo-angular';
+import {GoogleAnalyticsService} from '../../shared/services/google-analytics.service';
 
 @Component({
   selector: 't4e-blog',
@@ -17,10 +18,13 @@ export class BlogComponent implements OnInit {
   totalResultCount: number = 0;
 
   constructor(
-    private blogItemsService: BlogItemsService
+    private blogItemsService: BlogItemsService,
+    private ga: GoogleAnalyticsService
   ) { }
 
   ngOnInit(): void {
+    this.ga.recordPageView('Blog', '/blog');
+
     window.scroll(0,0);
 
     this.blogArticlesQueryRef = this.blogItemsService.getBlogArticles();

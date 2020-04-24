@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {GoogleAnalyticsService} from '../../shared/services/google-analytics.service';
 
 @Component({
   selector: 't4e-privacy',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivacyComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private ga: GoogleAnalyticsService
+  ) { }
 
   ngOnInit(): void {
+    this.ga.recordPageView('Privacidade', '/privacidade');
+
     window.scroll(0,0);
   }
 

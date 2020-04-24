@@ -6,6 +6,7 @@ import {Apollo, QueryRef} from 'apollo-angular';
 import {FaqsService} from '../../shared/services/faqs.service';
 import {IFaqItem} from '../../interfaces/faq-item.interface';
 import {map} from 'rxjs/operators';
+import {GoogleAnalyticsService} from '../../shared/services/google-analytics.service';
 
 @Component({
   selector: 't4e-faqs',
@@ -34,10 +35,12 @@ export class FaqsComponent implements OnInit {
   constructor(
     private appService: AppService,
     private faqsService: FaqsService,
-    private apollo: Apollo
+    private ga: GoogleAnalyticsService
   ) { }
 
   ngOnInit(): void {
+    this.ga.recordPageView('Faqs', '/faqs');
+
     window.scroll(0,0);
 
     this.providerFields$ = this.appService.getProviderFilterFields()
