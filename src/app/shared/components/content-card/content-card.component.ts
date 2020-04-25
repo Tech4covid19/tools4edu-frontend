@@ -17,7 +17,11 @@ export class ContentCardComponent {
       case 'TEAMS':
         return 'card-provider-teams.png';
       case 'ZOOM':
-        return 'card-provider-zoom.png'
+        return 'card-provider-zoom.png';
+      case 'GCLASSROOM':
+        return 'card-provider-gclassroom.png';
+      case 'WEBEX':
+        return 'card-provider-webex.png'
       default:
         return '';
     }
