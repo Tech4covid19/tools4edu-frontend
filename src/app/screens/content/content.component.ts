@@ -45,7 +45,15 @@ export class ContentComponent implements OnInit {
 
     window.scroll(0,0);
 
-    this.providerFields$ = this.appService.getProviderFilterFields()
+    this.providerFields$ = this.appService.getProviderFilterFields().pipe(
+      map(({ filterFields, loading, errors}) =>  {
+        return {
+          filterFields: filterFields.filter(f => f.name !== 'Tools4Edu'),
+          loading,
+          errors
+        }
+      })
+    );
     this.stakeholderFields$ = this.appService.getStakeholderFilterFields();
     this.tagFields$ = this.appService.getTagFilterFields();
 
