@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {IContentItem} from '../../interfaces/content-item.interface';
 import {GoogleAnalyticsService} from '../../shared/services/google-analytics.service';
+import {ReplaySubject} from 'rxjs';
 
 @Component({
   selector: 't4e-content-detail',
@@ -13,6 +14,10 @@ export class ContentDetailComponent implements OnInit {
   contentItem: IContentItem
   loading: boolean;
   contentInfoBlocks: Array<{ title: string, value: string }> = [];
+
+  videoStartedPlaying$: ReplaySubject<boolean> = new ReplaySubject<boolean>();
+  videoStoppedPlaying$: ReplaySubject<boolean> = new ReplaySubject<boolean>();
+  videoVolumeChanged$: ReplaySubject<boolean> = new ReplaySubject<boolean>();
 
   constructor(
     private route: ActivatedRoute,
@@ -44,6 +49,19 @@ export class ContentDetailComponent implements OnInit {
 
       this.contentInfoBlocks = this.getContentInfoBlocks();
     })
+
+    this.videoStartedPlaying$.subscribe((value) => {
+      if (!!value) {
+        this.ga.recordEvent('VIDEO', 'PLAY', this.contentItem.slug)
+      }
+    })
+
+    this.videoStoppedPlaying$.subscribe((value) => {
+      if (!!value) {
+        this.ga.recordEvent('VIDEO', 'ENDED', this.contentItem.slug)
+      }
+    })
+
   }
 
   getBackgroundHeader(): string {

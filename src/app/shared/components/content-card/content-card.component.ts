@@ -31,13 +31,15 @@ export class ContentCardComponent {
     if (this.contentItem.imageUrl) {
       return 'url('+ this.contentItem.imageUrl +')'
     } else {
-      switch(this.contentItem.stakeholder.code) {
-        case 'PROFESSOR':
-          return 'url(/assets/card/card-content-professor.png)';
-        case 'ALUNO':
-          return 'url(/assets/card/card-content-aluno.png)';
-        case 'PAIS':
-          return 'url(/assets/card/card-content-ee.png)';
+      if (this.contentItem.stakeholder) {
+        switch(this.contentItem.stakeholder.code) {
+          case 'PROFESSOR':
+            return 'url(/assets/card/card-content-professor.png)';
+          case 'ALUNO':
+            return 'url(/assets/card/card-content-aluno.png)';
+          case 'PAIS':
+            return 'url(/assets/card/card-content-ee.png)';
+        }
       }
     }
   }

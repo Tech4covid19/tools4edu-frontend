@@ -1,5 +1,5 @@
 <div [class]="'content-card ' + contentItem.type.toLowerCase()"
-     [ngStyle]="{backgroundImage: getBackgroundImage()}"
+     [ngStyle]="{backgroundImage: getBackgroundImage(), order: contentItem.order}"
      [routerLink]="['/conteudo/' + contentItem.slug]"
 >
   <div class="provider" *ngIf="contentItem.provider">

@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnChanges, Renderer2, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnChanges, Output, Renderer2, SimpleChanges, ViewChild} from '@angular/core';
 import {MediaObserver} from '@angular/flex-layout';
 import {fromEvent} from 'rxjs';
 import {auditTime} from 'rxjs/operators';
@@ -14,6 +14,10 @@ export class MediaPlayerComponent implements OnChanges {
 
   @Input() videoUrl: string;
   @Input() videoPoster: string;
+
+  @Output() onStartPlaying: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() onFinishedPlaying: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() onVolumeChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @ViewChild('mediaPlayerElement') mediaPlayerElement: ElementRef;
 
@@ -55,13 +59,23 @@ export class MediaPlayerComponent implements OnChanges {
     this.mediaPlayer = new MediaElementPlayer(
       this.mediaPlayerElement.nativeElement, {
         autoSize: true,
-        features: ['playpause', 'current', 'progress', 'duration', 'volume', 'fullscreen', 'airplay', 'chromecast']
+        features: ['playpause', 'current', 'progress', 'duration', 'volume', 'fullscreen', 'airplay', 'chromecast'],
+        success: (mediaElement) => {
+          mediaElement.addEventListener('playing', () => {
+            this.onStartPlaying.emit(true);
+          }, false);
+          mediaElement.addEventListener('ended', () => {
+            this.onFinishedPlaying.emit(true);
+          }, false);
+          mediaElement.addEventListener('volumechange', () => {
+            this.onVolumeChanged.emit(true);
+          }, false);
+        }
       }
     );
     this.mediaPlayer.setSrc(this.videoUrl);
     this.mediaPlayer.load();
-    // const video = this.mediaPlayerElement.nativeElement;
-    // setTimeout(() => {}, 300);
+
   }
 
 }

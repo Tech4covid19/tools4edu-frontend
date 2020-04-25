@@ -11,6 +11,9 @@
     <t4e-media-player
       [videoUrl]="contentItem.videoUrl"
       [videoPoster]="getVideoPoster()"
+      (onStartPlaying)="videoStartedPlaying$.next($event)"
+      (onFinishedPlaying)="videoStoppedPlaying$.next($event)"
+      (onVolumeChanged)="videoVolumeChanged$.next($event)"
     ></t4e-media-player>
   </div>
   <div class="content__image" *ngIf="contentItem.imageUrl" [ngStyle]="{backgroundImage: 'url('+contentItem.imageUrl+')'}"></div>

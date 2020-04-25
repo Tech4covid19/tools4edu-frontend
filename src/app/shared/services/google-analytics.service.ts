@@ -11,6 +11,13 @@ export class GoogleAnalyticsService {
     })
   }
 
+  recordEvent(eventCategory, eventAction, eventLabel) {
+    gtag('event', eventAction, {
+      'event_category': eventCategory,
+      'event_label': eventLabel
+    });
+  }
+
   recordVideoViewStart() {
 
   }

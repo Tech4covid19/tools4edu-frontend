@@ -61,7 +61,20 @@ export class ContentComponent implements OnInit {
 
     this.contentItemsQueryRef.valueChanges.subscribe(({data, loading, errors}) => {
       if (!loading) {
-        this.contentItems = data.contentItems;
+
+        const groupedStakeholders = this.getGroupedStakeholders(data.contentItems);
+
+        const professorArr = groupedStakeholders.filter((item: any) => item.stakeholderCode === 'PROFESSOR');
+        const alunoArr = groupedStakeholders.filter((item: any) => item.stakeholderCode === 'ALUNO');
+        const paisArr = groupedStakeholders.filter((item: any) => item.stakeholderCode === 'PAIS');
+        const contentArr = groupedStakeholders.filter((item: any) => item.stakeholderCode === 'CONTENT-ARTICLE');
+
+        this.contentItems = [].concat(
+          professorArr.length > 0 ? professorArr[0].items.sort((a, b) => a.order - b.order) : [],
+          alunoArr.length > 0 ? alunoArr[0].items.sort((a, b) => a.order - b.order) : [],
+          paisArr.length > 0 ? paisArr[0].items.sort((a, b) => a.order - b.order) : [],
+          contentArr.length > 0 ? contentArr[0].items.sort((a, b) => a.order - b.order) : []
+        )
       }
     });
 
@@ -117,6 +130,34 @@ export class ContentComponent implements OnInit {
       this.selectedStakeholders$.next([])
       this.selectedProviders$.next([]);
     });
+  }
+
+  getGroupedStakeholders(contentItems: IContentItem[]): Array<{ stakeholderCode: string, items: IContentItem[]}> {
+    return Object.values(contentItems.reduce((result, item) => {
+      if (item.type === 'CONTENT-TUTORIAL-VIDEO') {
+        if (!result[item.stakeholder.code]) {
+          result[item.stakeholder.code] = {
+            stakeholderCode: item.stakeholder.code,
+            items: []
+          }
+        }
+
+        result[item.stakeholder.code].items.push(item);
+
+        return result;
+      } else {
+        if (!result['CONTENT-ARTICLE']) {
+          result['CONTENT-ARTICLE'] = {
+            stakeholderCode: 'CONTENT-ARTICLE',
+            items: []
+          }
+        }
+
+        result['CONTENT-ARTICLE'].items.push(item);
+
+        return result;
+      }
+    }, {}))
   }
 
 }
