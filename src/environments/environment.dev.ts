@@ -1,4 +1,4 @@
-const SERVER_URL = 'https://4vxq5u2qih.execute-api.eu-central-1.amazonaws.com/production'
+const SERVER_URL = 'https://cnom3x70jk.execute-api.eu-central-1.amazonaws.com/dev'
 
 export const environment = {
   production: true,
