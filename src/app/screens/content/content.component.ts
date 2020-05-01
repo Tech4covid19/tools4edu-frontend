@@ -66,13 +66,11 @@ export class ContentComponent implements OnInit {
     this.contentItemsQueryRef = this.contentItemsService.getContentItems();
 
     this.contentItemsQueryRef.valueChanges.subscribe(({data, loading, errors}) => {
-      console.log('errors', errors);
       if (!loading && data.contentItems) {
 
         clearTimeout(this.loadingTimeoutRef)
 
         this.contentItems = this.getOrderedResults(data.contentItems)
-        console.log('contentITems', this.contentItems);
         this.contentLoading = false;
       }
     });
