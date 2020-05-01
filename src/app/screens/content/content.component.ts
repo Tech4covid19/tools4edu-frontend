@@ -8,11 +8,13 @@ import {IContentItem} from '../../interfaces/content-item.interface';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ContentItemsService} from '../../shared/services/content-items.service';
 import {GoogleAnalyticsService} from '../../shared/services/google-analytics.service';
+import {listAnimation} from './content.animations';
 
 @Component({
   selector: 't4e-content',
   templateUrl: './content.component.html',
-  styleUrls: ['./content.component.scss']
+  styleUrls: ['./content.component.scss'],
+  animations: [listAnimation]
 })
 export class ContentComponent implements OnInit {
 
@@ -32,6 +34,9 @@ export class ContentComponent implements OnInit {
   contentItems: IContentItem[] = [];
 
   filterDrawerOpened: boolean = false;
+
+  contentLoading: boolean = false;
+  loadingTimeoutRef: any;
 
   constructor(
     private appService: AppService,
@@ -62,7 +67,11 @@ export class ContentComponent implements OnInit {
 
     this.contentItemsQueryRef.valueChanges.subscribe(({data, loading, errors}) => {
       if (!loading && data.contentItems) {
+
+        clearTimeout(this.loadingTimeoutRef)
+
         this.contentItems = this.getOrderedResults(data.contentItems)
+        this.contentLoading = false;
       }
     });
 
@@ -95,6 +104,11 @@ export class ContentComponent implements OnInit {
         ]
       })
     ).subscribe(([providerIds, stakeholderIds, tagIds, searchTerm]) => {
+      this.loadingTimeoutRef = setTimeout(() => {
+        this.contentLoading = true;
+        this.contentItems = [];
+      }, 300);
+
 
       this.totalSelectedFilters = providerIds.length + stakeholderIds.length + tagIds.length;
 

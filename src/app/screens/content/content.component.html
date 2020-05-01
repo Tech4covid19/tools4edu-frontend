@@ -47,7 +47,18 @@
     </div>
   </aside>
 
-  <section class="t4e-content-items">
+  <section class="t4e-content-items" *ngIf="contentLoading">
+    <content-loader
+      width="315"
+      height="280"
+      *ngFor="let item of [1, 1, 1, 1, 1, 1]"
+    >
+      <svg:path d="M267.934 32.9754C264.53 13.895 247.937 0 228.555 0H40C17.9086 0 0 17.9086 0 40V240C0 262.091 17.9086 280 40 280H264.233C289.135 280 307.985 257.491 303.611 232.975L267.934 32.9754Z" fill="blue"/>
+      <svg:path d="M267.934 32.9754C264.53 13.895 247.937 0 228.555 0H40C17.9086 0 0 17.9086 0 40V240C0 262.091 17.9086 280 40 280H264.233C289.135 280 307.985 257.491 303.611 232.975L267.934 32.9754Z" fill="red"/>
+    </content-loader>
+  </section>
+
+  <section class="t4e-content-items" [@listAnimation]="contentItems && contentItems.length">
 
     <t4e-search
       class="mobile"
@@ -69,6 +80,7 @@
       *ngFor="let contentItem of contentItems"
       [contentItem]="contentItem"
     ></t4e-content-card>
+
   </section>
 
 

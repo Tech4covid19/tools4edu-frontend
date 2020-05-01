@@ -20,6 +20,7 @@ import {AppService} from './app.service';
 import {ContentDetailComponent} from './screens/content-detail/content-detail.component';
 import {BlogDetailComponent} from './screens/blog-detail/blog-detail.component';
 import {CommonModule} from '@angular/common';
+import {ContentLoaderModule} from '@ngneat/content-loader';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {CommonModule} from '@angular/common';
     BrowserAnimationsModule,
     CarouselModule,
     NgxSkeletonLoaderModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ContentLoaderModule
   ],
   providers: [
     AppService
