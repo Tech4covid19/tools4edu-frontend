@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AppService} from '../../app.service';
-import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
+import {BehaviorSubject, combineLatest, Observable, ReplaySubject} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {IFilters} from '../../shared/components/filters/interfaces/filters.interface';
 import {QueryRef} from 'apollo-angular';
@@ -66,11 +66,13 @@ export class ContentComponent implements OnInit {
     this.contentItemsQueryRef = this.contentItemsService.getContentItems();
 
     this.contentItemsQueryRef.valueChanges.subscribe(({data, loading, errors}) => {
+      console.log('errors', errors);
       if (!loading && data.contentItems) {
 
         clearTimeout(this.loadingTimeoutRef)
 
         this.contentItems = this.getOrderedResults(data.contentItems)
+        console.log('contentITems', this.contentItems);
         this.contentLoading = false;
       }
     });
@@ -136,6 +138,8 @@ export class ContentComponent implements OnInit {
       this.selectedStakeholders$.next([])
       this.selectedProviders$.next([]);
     });
+
+    this.searchTerm$.next('');
   }
 
   getGroupedStakeholders(contentItems: IContentItem[]): Array<{ stakeholderCode: string, items: IContentItem[]}> {

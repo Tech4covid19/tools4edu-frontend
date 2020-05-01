@@ -11,7 +11,8 @@ const GET_CONTENT_ITEMS = gql`
     $providerIds: [String],
     $tagIds: [String],
     $limit: Float,
-    $startAt: Float
+    $startAt: Float,
+    $searchTerm: String
   ) {
     contentItems(
       stakeholderIds: $stakeholderIds,
@@ -19,7 +20,8 @@ const GET_CONTENT_ITEMS = gql`
       tagIds: $tagIds,
       limit: $limit,
       startAt: $startAt,
-      onlyPublished: true
+      onlyPublished: true,
+      searchTerm: $searchTerm
     ) {
       type,
       title,

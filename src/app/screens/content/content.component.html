@@ -8,6 +8,7 @@
     <div class="sticky-filters">
 
     <t4e-search
+      (onSearch)="searchTerm$.next($event)"
       placeholder="Pesquisar conteúdos"
     ></t4e-search>
 
@@ -62,6 +63,7 @@
 
     <t4e-search
       class="mobile"
+      (onSearch)="searchTerm$.next($event)"
       placeholder="Pesquisar conteúdos"
     ></t4e-search>
 

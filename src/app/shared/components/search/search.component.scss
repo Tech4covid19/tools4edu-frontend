@@ -24,12 +24,48 @@
       border-radius: 50%;
       padding: 22px;
       transform: translateY(-50%);
+      cursor: pointer;
+
+      &.search-btn {
+        svg {
+          top: 50%;
+          left: 49%;
+          transform: translate(-41%, -53%);
+        }
+
+      }
+
+      &.close-btn {
+        svg {
+          top: 50%;
+          left: 49%;
+          transform: translate(-46%, -53%) rotate(45deg);
+        }
+      }
 
       svg {
         position: absolute;
-        top: 50%;
-        left: 49%;
-        transform: translate(-41%, -53%);
+      }
+
+    }
+
+    .validation-text {
+      display: none;
+      position: absolute;
+      bottom: -35px;
+      left: 16px;
+      margin-right: 16px;
+      @include font('footer');
+      color: $color-red;
+    }
+
+    &.show-validation {
+      input {
+        border-color: $color-red;
+      }
+
+      .validation-text {
+        display: block;
       }
     }
   }
