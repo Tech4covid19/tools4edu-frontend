@@ -87,7 +87,9 @@ export class ContentItemsService {
       variables: {
         providerIds: [],
         stakeholderIds: [],
-        tagIds: []
+        tagIds: [],
+        limit: 200,
+        startAt: 0
       }
     })
   }

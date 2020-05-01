@@ -46,7 +46,9 @@ export class FaqsService {
       query: GET_FAQ_ITEMS,
       variables: {
         providerIds: [],
-        stakeholderIds: []
+        stakeholderIds: [],
+        limit: 200,
+        startAt: 0
       }
     })
   }
