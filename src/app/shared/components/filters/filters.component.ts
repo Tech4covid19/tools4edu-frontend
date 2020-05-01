@@ -2,11 +2,9 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnChanges,
   OnDestroy,
   OnInit,
   Output,
-  SimpleChanges
 } from '@angular/core';
 import {IFilterField, IFilters} from './interfaces/filters.interface';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
@@ -17,7 +15,7 @@ import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.scss']
 })
-export class FiltersComponent implements OnInit, OnChanges, OnDestroy {
+export class FiltersComponent implements OnInit, OnDestroy {
 
   @Input() title: string;
   @Input() fields: Observable<IFilters>;
@@ -87,18 +85,17 @@ export class FiltersComponent implements OnInit, OnChanges, OnDestroy {
     return (this.filterForm.get('filters') as FormArray).controls
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (this.selectedFilters && !this.selectedFiltersSubscription) {
-      this.selectedFiltersSubscription = this.selectedFilters.subscribe((result) => {
-        for (let filterControl of (this.filterForm.get('filters') as FormArray).controls) {
-          if (!result.includes(filterControl.value)) {
-            filterControl.setValue("");
-          }
-        }
-      })
-    }
-
-  }
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   if (this.selectedFilters && !this.selectedFiltersSubscription) {
+  //     this.selectedFiltersSubscription = this.selectedFilters.subscribe((result) => {
+  //       for (let filterControl of (this.filterForm.get('filters') as FormArray).controls) {
+  //         if (!result.includes(filterControl.value)) {
+  //           filterControl.setValue("");
+  //         }
+  //       }
+  //     })
+  //   }
+  // }
 
   ngOnDestroy(): void {
     if (this.selectedFiltersSubscription) {

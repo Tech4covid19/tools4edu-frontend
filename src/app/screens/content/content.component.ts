@@ -60,21 +60,8 @@ export class ContentComponent implements OnInit {
     this.contentItemsQueryRef = this.contentItemsService.getContentItems();
 
     this.contentItemsQueryRef.valueChanges.subscribe(({data, loading, errors}) => {
-      if (!loading) {
-
-        const groupedStakeholders = this.getGroupedStakeholders(data.contentItems);
-
-        const professorArr = groupedStakeholders.filter((item: any) => item.stakeholderCode === 'PROFESSOR');
-        const alunoArr = groupedStakeholders.filter((item: any) => item.stakeholderCode === 'ALUNO');
-        const paisArr = groupedStakeholders.filter((item: any) => item.stakeholderCode === 'PAIS');
-        const contentArr = groupedStakeholders.filter((item: any) => item.stakeholderCode === 'CONTENT-ARTICLE');
-
-        this.contentItems = [].concat(
-          professorArr.length > 0 ? professorArr[0].items.sort((a, b) => a.order - b.order) : [],
-          alunoArr.length > 0 ? alunoArr[0].items.sort((a, b) => a.order - b.order) : [],
-          paisArr.length > 0 ? paisArr[0].items.sort((a, b) => a.order - b.order) : [],
-          contentArr.length > 0 ? contentArr[0].items.sort((a, b) => a.order - b.order) : []
-        )
+      if (!loading && data.contentItems) {
+        this.contentItems = this.getOrderedResults(data.contentItems)
       }
     });
 
@@ -105,6 +92,7 @@ export class ContentComponent implements OnInit {
         ]
       })
     ).subscribe(([providerIds, stakeholderIds, tagIds]) => {
+
       this.totalSelectedFilters = providerIds.length + stakeholderIds.length + tagIds.length;
 
       this.contentItemsQueryRef.refetch({
@@ -158,6 +146,22 @@ export class ContentComponent implements OnInit {
         return result;
       }
     }, {}))
+  }
+
+  getOrderedResults(contentItems: IContentItem[]): Array<IContentItem> {
+    const groupedStakeholders = this.getGroupedStakeholders(contentItems);
+
+    const professorArr = groupedStakeholders.filter((item: any) => item.stakeholderCode === 'PROFESSOR');
+    const alunoArr = groupedStakeholders.filter((item: any) => item.stakeholderCode === 'ALUNO');
+    const paisArr = groupedStakeholders.filter((item: any) => item.stakeholderCode === 'PAIS');
+    const contentArr = groupedStakeholders.filter((item: any) => item.stakeholderCode === 'CONTENT-ARTICLE');
+
+    return [].concat(
+      professorArr.length > 0 ? professorArr[0].items.sort((a, b) => a.order - b.order) : [],
+      alunoArr.length > 0 ? alunoArr[0].items.sort((a, b) => a.order - b.order) : [],
+      paisArr.length > 0 ? paisArr[0].items.sort((a, b) => a.order - b.order) : [],
+      contentArr.length > 0 ? contentArr[0].items.sort((a, b) => a.order - b.order) : []
+    )
   }
 
 }
