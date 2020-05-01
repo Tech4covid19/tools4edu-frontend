@@ -1,6 +1,18 @@
 <div class="filters-wrapper">
   <div class="filters-wrapper__title">{{title}}</div>
-  <div class="filters-wrapper__content">
+  <div class="filters-wrapper__loader">
+    <content-loader
+      width="410"
+      height="250"
+      [baseUrl]="window.location.pathname"
+      *ngIf="!filterFields || filterFields.length === 0"
+    >
+      <svg:rect x="6" y="1" rx="30" ry="30" width="364" height="60" />
+      <svg:rect x="6" y="81" rx="30" ry="30" width="364" height="60" />
+      <svg:rect x="6" y="161" rx="30" ry="30" width="364" height="60" />
+    </content-loader>
+  </div>
+  <div class="filters-wrapper__content" [@listAnimation]="filterFields && filterFields.length">
       <button
         class="filter-item"
         *ngFor="let filter of filterFields; let i = index"

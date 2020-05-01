@@ -7,6 +7,10 @@
   <aside class="t4e-content-filters">
     <div class="sticky-filters">
 
+    <t4e-search
+      placeholder="Pesquisar conteúdos"
+    ></t4e-search>
+
     <t4e-filters
       title="Conteúdos para"
       [fields]="stakeholderFields$"
@@ -44,6 +48,12 @@
   </aside>
 
   <section class="t4e-content-items">
+
+    <t4e-search
+      class="mobile"
+      placeholder="Pesquisar conteúdos"
+    ></t4e-search>
+
     <div class="t4e-filter-drawer-opener">
       <button (click)="openFilterDrawer()">
         <span>SELECCIONAR FILTROS ({{totalSelectedFilters}})</span>
@@ -60,6 +70,8 @@
       [contentItem]="contentItem"
     ></t4e-content-card>
   </section>
+
+
 
   <t4e-filter-drawer
     [isOpened]="filterDrawerOpened"

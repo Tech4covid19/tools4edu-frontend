@@ -23,6 +23,7 @@ export class ContentComponent implements OnInit {
   selectedProviders$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
   selectedStakeholders$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
   selectedTags$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+  searchTerm$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   totalSelectedFilters: number = 0;
 
@@ -82,23 +83,26 @@ export class ContentComponent implements OnInit {
     combineLatest(
       this.selectedProviders$,
       this.selectedStakeholders$,
-      this.selectedTags$
+      this.selectedTags$,
+      this.searchTerm$
     ).pipe(
-      map(([ providers, stakeholders, tags]) => {
+      map(([ providers, stakeholders, tags, searchTerm]) => {
         return [
           providers.filter(v => v.length > 0),
           stakeholders.filter(v => v.length > 0),
-          tags.filter(v => v.length > 0)
+          tags.filter(v => v.length > 0),
+          searchTerm
         ]
       })
-    ).subscribe(([providerIds, stakeholderIds, tagIds]) => {
+    ).subscribe(([providerIds, stakeholderIds, tagIds, searchTerm]) => {
 
       this.totalSelectedFilters = providerIds.length + stakeholderIds.length + tagIds.length;
 
       this.contentItemsQueryRef.refetch({
         providerIds,
         stakeholderIds,
-        tagIds
+        tagIds,
+        searchTerm
       })
     })
 

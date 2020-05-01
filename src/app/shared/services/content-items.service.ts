@@ -88,6 +88,7 @@ export class ContentItemsService {
         providerIds: [],
         stakeholderIds: [],
         tagIds: [],
+        searchTerm: '',
         limit: 200,
         startAt: 0
       }

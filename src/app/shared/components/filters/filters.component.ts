@@ -1,6 +1,6 @@
 import {
   Component,
-  EventEmitter,
+  EventEmitter, Inject,
   Input,
   OnDestroy,
   OnInit,
@@ -9,11 +9,16 @@ import {
 import {IFilterField, IFilters} from './interfaces/filters.interface';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {WINDOW} from '../../services/window.service';
+import {listAnimation} from './filters.animations';
 
 @Component({
   selector: 't4e-filters',
   templateUrl: './filters.component.html',
-  styleUrls: ['./filters.component.scss']
+  styleUrls: ['./filters.component.scss'],
+  animations: [
+    listAnimation
+  ]
 })
 export class FiltersComponent implements OnInit, OnDestroy {
 
@@ -30,7 +35,10 @@ export class FiltersComponent implements OnInit, OnDestroy {
 
   formReady: boolean = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    @Inject(WINDOW) public window: Window
+  ) {
     this.filterForm = this.fb.group({
       filters: new FormArray([])
     })
@@ -40,7 +48,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
     this.fields.subscribe((result) => {
       if (!result.filterFields) return;
 
-      this.filterFields = result.filterFields;
+      this.filterFields = result.filterFields.sort((a, b) => a.order - b.order);
 
       result.filterFields.forEach((field, index) => {
         let state = '';

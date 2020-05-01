@@ -15,6 +15,10 @@ import { MediaPlayerComponent } from './components/media-player/media-player.com
 import { AccordionComponent } from './components/accordion/accordion.component';
 import {FaqsService} from './services/faqs.service';
 import {BlogItemsService} from './services/blog-items.service';
+import { SearchComponent } from './components/search/search.component';
+import {ContentLoaderModule} from '@ngneat/content-loader';
+import {WINDOW_PROVIDERS} from './services/window.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const SHARED_COMPONENTS = [
   NavbarComponent,
@@ -26,12 +30,14 @@ const SHARED_COMPONENTS = [
   FilterDrawerComponent,
   MediaPlayerComponent,
   AccordionComponent,
+  SearchComponent
 ];
 
 const SHARED_SERVICES = [
   ContentItemsService,
   FaqsService,
-  BlogItemsService
+  BlogItemsService,
+  WINDOW_PROVIDERS
 ]
 
 @NgModule({
@@ -45,7 +51,9 @@ const SHARED_SERVICES = [
     CommonModule,
     RouterModule,
     CarouselModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ContentLoaderModule,
+    BrowserAnimationsModule
   ],
   exports: [
     ...SHARED_COMPONENTS
