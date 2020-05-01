@@ -4,7 +4,23 @@
   description="Encontre aqui informação, sugestões e partilha de boas-práticas para o ajudar obter os melhores resultados. Iremos manter o nosso Blog sempre actualizado."
 ></t4e-page-header>
 <div class="t4e-blog-page">
-  <section class="blog-articles-list">
+  <section class="search">
+    <t4e-search
+      placeholder="Pesquisar artigos"
+      (onSearch)="$searchTerm.next($event)"
+    ></t4e-search>
+  </section>
+  <section class="blog-articles-list" *ngIf="contentLoading">
+    <content-loader
+      width="315"
+      height="280"
+      *ngFor="let item of [1, 1, 1, 1, 1, 1]"
+    >
+      <svg:path d="M267.934 32.9754C264.53 13.895 247.937 0 228.555 0H40C17.9086 0 0 17.9086 0 40V240C0 262.091 17.9086 280 40 280H264.233C289.135 280 307.985 257.491 303.611 232.975L267.934 32.9754Z" fill="blue"/>
+      <svg:path d="M267.934 32.9754C264.53 13.895 247.937 0 228.555 0H40C17.9086 0 0 17.9086 0 40V240C0 262.091 17.9086 280 40 280H264.233C289.135 280 307.985 257.491 303.611 232.975L267.934 32.9754Z" fill="red"/>
+    </content-loader>
+  </section>
+  <section class="blog-articles-list" [@listAnimation]="blogArticlesList && blogArticlesList.length > 0">
     <ng-container *ngFor="let article of blogArticlesList">
       <t4e-blog-article-card [cardData]="article"></t4e-blog-article-card>
     </ng-container>

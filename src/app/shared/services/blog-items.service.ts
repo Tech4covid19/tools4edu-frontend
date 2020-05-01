@@ -8,12 +8,14 @@ import {IBlogArticle} from '../../interfaces/blog-article.interface';
 const GET_BLOG_ARTICLES = gql`
   query GetBlogArticles(
     $limit: Float,
-    $startAt: Float
+    $startAt: Float,
+    $searchTerm: String
   ) {
     blogArticles(
       limit: $limit,
       startAt: $startAt,
-      onlyPublished: true
+      onlyPublished: true,
+      searchTerm: $searchTerm
     ) {
       id,
       title,

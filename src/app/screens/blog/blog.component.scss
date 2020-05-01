@@ -4,6 +4,11 @@
   margin-top: 60px;
   margin-bottom: 120px;
 
+  .search {
+    @include containerPadding();
+    margin-bottom: 60px;
+  }
+
   .blog-articles-list {
     @include containerPadding();
 
