@@ -3,9 +3,15 @@
   title="Dúvidas mais frequentes"
   [description]="'Encontre aqui resposta às dúvidas mais frequentes. Se, ainda assim, necessitar de ajuda, por favor contacte-nos enviando um email para <a href=\'mailto:ajuda@tools4edu.com\'>ajuda@tools4edu.com</a>'"
 ></t4e-page-header>
+
 <div class="t4e-faqs-page">
   <aside class="t4e-content-filters">
     <div class="sticky-filters">
+      <t4e-search
+        (onSearch)="searchTerm$.next($event)"
+        placeholder="Pesquisar questões"
+      ></t4e-search>
+
       <t4e-filters
         title="Questões para"
         [fields]="stakeholderFields$"
@@ -34,7 +40,29 @@
       </div>
     </div>
   </aside>
-  <section class="t4e-faq-items">
+
+  <section class="t4e-faq-items" *ngIf="contentLoading">
+    <content-loader
+      width="410"
+      height="250"
+      [baseUrl]="window.location.pathname"
+    >
+      <svg:rect x="6" y="1" rx="15" ry="15" width="364" height="30" />
+      <svg:rect x="6" y="41" rx="15" ry="15" width="364" height="30" />
+      <svg:rect x="6" y="81" rx="15" ry="15" width="364" height="30" />
+      <svg:rect x="6" y="121" rx="15" ry="15" width="364" height="30" />
+      <svg:rect x="6" y="161" rx="15" ry="15" width="364" height="30" />
+    </content-loader>
+  </section>
+
+  <section class="t4e-faq-items" [@listAnimation]="faqItemList.length">
+
+    <t4e-search
+      class="mobile"
+      (onSearch)="searchTerm$.next($event)"
+      placeholder="Pesquisar questões"
+    ></t4e-search>
+
     <div class="t4e-filter-drawer-opener">
       <button (click)="openFilterDrawer()">
         <span>SELECCIONAR FILTROS ({{totalSelectedFilters}})</span>

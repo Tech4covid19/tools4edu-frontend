@@ -7,14 +7,16 @@ const GET_FAQ_ITEMS = gql`
     $stakeholderIds: [String],
     $providerIds: [String],
     $limit: Float,
-    $startAt: Float
+    $startAt: Float,
+    $searchTerm: String
   ) {
     faqs(
       stakeholderIds: $stakeholderIds,
       providerIds: $providerIds,
       limit: $limit,
       startAt: $startAt,
-      onlyPublished: true
+      onlyPublished: true,
+      searchTerm: $searchTerm
     ) {
       id,
       order,
@@ -48,7 +50,8 @@ export class FaqsService {
         providerIds: [],
         stakeholderIds: [],
         limit: 200,
-        startAt: 0
+        startAt: 0,
+        searchTerm: ''
       }
     })
   }

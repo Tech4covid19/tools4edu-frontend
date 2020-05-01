@@ -67,9 +67,6 @@ export class ContentComponent implements OnInit {
 
     this.contentItemsQueryRef.valueChanges.subscribe(({data, loading, errors}) => {
       if (!loading && data.contentItems) {
-
-        clearTimeout(this.loadingTimeoutRef)
-
         this.contentItems = this.getOrderedResults(data.contentItems)
         this.contentLoading = false;
       }
@@ -104,11 +101,8 @@ export class ContentComponent implements OnInit {
         ]
       })
     ).subscribe(([providerIds, stakeholderIds, tagIds, searchTerm]) => {
-      this.loadingTimeoutRef = setTimeout(() => {
-        this.contentLoading = true;
-        this.contentItems = [];
-      }, 300);
-
+      this.contentLoading = true;
+      this.contentItems = [];
 
       this.totalSelectedFilters = providerIds.length + stakeholderIds.length + tagIds.length;
 

@@ -17,7 +17,7 @@
 
   @include media-laptop {
     grid-template-columns: 1fr;
-    grid-template-areas: 'content-items';
+    grid-template-areas: 'faq-items';
     grid-column-gap: 0;
   }
 
@@ -36,6 +36,9 @@
             margin-bottom: 8px;
           }
         }
+      }
+      .search-wrapper {
+        margin-bottom: 60px;
       }
     }
 
@@ -134,6 +137,29 @@
       }
     }
 
+  }
+
+  t4e-search.mobile {
+    display: none;
+    grid-column: 1 / span 2;
+    width: 100%;
+    margin-bottom: 20px;
+
+    ::ng-deep {
+      .search-wrapper {
+        width: 95%;
+      }
+    }
+
+    @include media-tablet {
+      grid-column: 1;
+    }
+
+    @include media-laptop {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   .t4e-filter-drawer-opener {

@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {IFilters} from '../../shared/components/filters/interfaces/filters.interface';
 import {AppService} from '../../app.service';
-import {Apollo, QueryRef} from 'apollo-angular';
+import {QueryRef} from 'apollo-angular';
 import {FaqsService} from '../../shared/services/faqs.service';
 import {IFaqItem} from '../../interfaces/faq-item.interface';
 import {map} from 'rxjs/operators';
 import {GoogleAnalyticsService} from '../../shared/services/google-analytics.service';
+import {listAnimation} from './faq.animations';
+import {WINDOW} from '../../shared/services/window.service';
 
 @Component({
   selector: 't4e-faqs',
   templateUrl: './faqs.component.html',
-  styleUrls: ['./faqs.component.scss']
+  styleUrls: ['./faqs.component.scss'],
+  animations: [listAnimation]
 })
 export class FaqsComponent implements OnInit {
 
@@ -20,12 +23,14 @@ export class FaqsComponent implements OnInit {
 
   selectedProviders$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
   selectedStakeholders$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+  searchTerm$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   totalSelectedFilters: number = 0;
 
   faqItemsQueryRef: QueryRef<any>;
   faqItems: IFaqItem[] = [];
 
+  contentLoading: boolean = true;
   filterDrawerOpened: boolean = false;
 
   currentResultCount: number = 6;
@@ -35,7 +40,8 @@ export class FaqsComponent implements OnInit {
   constructor(
     private appService: AppService,
     private faqsService: FaqsService,
-    private ga: GoogleAnalyticsService
+    private ga: GoogleAnalyticsService,
+    @Inject(WINDOW) public window: Window
   ) { }
 
   ngOnInit(): void {
@@ -50,6 +56,7 @@ export class FaqsComponent implements OnInit {
 
     this.faqItemsQueryRef.valueChanges.subscribe(({ data, loading, errors}) => {
       if (!loading) {
+        this.contentLoading = false;
         this.faqItems = data.faqs
         this.totalResultCount = this.faqItems.length;
       }
@@ -57,20 +64,28 @@ export class FaqsComponent implements OnInit {
 
     combineLatest(
       this.selectedProviders$,
-      this.selectedStakeholders$
+      this.selectedStakeholders$,
+      this.searchTerm$
     ).pipe(
-      map(([providers, stakeholders]) => {
+      map(([providers, stakeholders, searchTerm]) => {
         return [
           providers.filter(v => v.length > 0),
-          stakeholders.filter(v => v.length > 0)
+          stakeholders.filter(v => v.length > 0),
+          searchTerm
         ]
       })
-    ).subscribe(([ providerIds, stakeholderIds ]) => {
+    ).subscribe(([ providerIds, stakeholderIds, searchTerm]) => {
       this.totalSelectedFilters = providerIds.length + stakeholderIds.length;
+
+      this.faqItems = [];
+      this.contentLoading = true;
 
       this.faqItemsQueryRef.refetch({
         providerIds,
-        stakeholderIds
+        stakeholderIds,
+        searchTerm
+      }).then(() => {
+        this.contentLoading = false
       })
 
       this.currentResultCount = 6;
