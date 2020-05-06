@@ -119,16 +119,20 @@ export class ContentDetailComponent implements OnInit {
   getContentInfoBlocks(): Array<{ title: string, value: string }> {
     let infoBlocks = [];
 
+    if (!!this.contentItem.videoUrl) {
+      infoBlocks.push({ title: 'Conteúdo', value: 'Vídeo' })
+    } else {
+      infoBlocks.push({ title: 'Conteúdo', value: 'Artigo' })
+    }
+
     switch(this.contentItem.type) {
       case 'CONTENT-TUTORIAL-VIDEO':
-        infoBlocks.push({ title: 'Conteúdo', value: 'Vídeo' })
         if (this.contentItem.videoTime) {
           infoBlocks.push({ title: 'Duração', value: this.contentItem.videoTime + ' min' })
         }
         infoBlocks.push({ title: 'Plataforma', value: this.contentItem.provider.title })
         break;
       case 'CONTENT-ARTICLE':
-        infoBlocks.push({ title: 'Conteúdo', value: 'Artigo' })
         if (this.getReadingTime() !== -1) {
           infoBlocks.push({ title: 'Leitura', value: this.getReadingTime() + ' min' })
         }

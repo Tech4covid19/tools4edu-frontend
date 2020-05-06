@@ -37,7 +37,12 @@ export class BlogDetailComponent implements OnInit {
   getBlogArticleInfoBlocks(): Array<{ title: string, value: string }> {
     let infoBlocks = [];
 
-    infoBlocks.push({title: 'Conteúdo', value: 'Artigo'})
+    if (!!this.blogArticle.videoUrl) {
+      infoBlocks.push({ title: 'Conteúdo', value: 'Vídeo' })
+    } else {
+      infoBlocks.push({ title: 'Conteúdo', value: 'Artigo' })
+    }
+
     if (this.getReadingTime() !== -1) {
       infoBlocks.push({title: 'Leitura', value: this.getReadingTime() + ' min'})
     }
