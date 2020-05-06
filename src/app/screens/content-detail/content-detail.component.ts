@@ -110,7 +110,7 @@ export class ContentDetailComponent implements OnInit {
     const readingTime = wordCount / WORDS_PER_MINUTE;
 
     if (readingTime < 1) {
-      return 1;
+      return -1;
     } else {
       return readingTime.toFixed(0);
     }
@@ -122,12 +122,16 @@ export class ContentDetailComponent implements OnInit {
     switch(this.contentItem.type) {
       case 'CONTENT-TUTORIAL-VIDEO':
         infoBlocks.push({ title: 'Conteúdo', value: 'Vídeo' })
-        infoBlocks.push({ title: 'Duração', value: this.contentItem.videoTime + ' min' })
+        if (this.contentItem.videoTime) {
+          infoBlocks.push({ title: 'Duração', value: this.contentItem.videoTime + ' min' })
+        }
         infoBlocks.push({ title: 'Plataforma', value: this.contentItem.provider.title })
         break;
       case 'CONTENT-ARTICLE':
         infoBlocks.push({ title: 'Conteúdo', value: 'Artigo' })
-        infoBlocks.push({ title: 'Leitura', value: this.getReadingTime() + ' min' })
+        if (this.getReadingTime() !== -1) {
+          infoBlocks.push({ title: 'Leitura', value: this.getReadingTime() + ' min' })
+        }
         infoBlocks.push({ title: 'Temática', value: this.contentItem.tags[0].title })
         break;
       default:

@@ -7,8 +7,14 @@
   [description]="getHeaderDescription()"
 ></t4e-page-header>
 <section class="t4e-blog-article">
+  <div class="content__media-player" *ngIf="blogArticle.videoUrl">
+    <t4e-media-player
+      [videoUrl]="blogArticle.videoUrl"
+      [videoPoster]="blogArticle.images[0]"
+    ></t4e-media-player>
+  </div>
   <div class="content__image"
-       *ngIf="blogArticle.images && blogArticle.images[0]"
+       *ngIf="blogArticle.images && blogArticle.images[0] && !blogArticle.videoUrl"
        [ngStyle]="{ backgroundImage: 'url('+blogArticle.images[0]+')'}"
   ></div>
   <div class="content__info">
@@ -19,5 +25,8 @@
   </div>
   <div class="content__text">
     <div class="text" [innerHTML]="blogArticle.text"></div>
+  </div>
+  <div class="content__subscribe">
+    <t4e-egoi-subscribe></t4e-egoi-subscribe>
   </div>
 </section>

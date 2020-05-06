@@ -19,6 +19,15 @@ import { SearchComponent } from './components/search/search.component';
 import {ContentLoaderModule} from '@ngneat/content-loader';
 import {WINDOW_PROVIDERS} from './services/window.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card'
+import { EgoiSubscribeComponent } from './components/egoi-subscribe/egoi-subscribe.component';
+import {EgoiService} from './services/egoi.service';
+
 
 const SHARED_COMPONENTS = [
   NavbarComponent,
@@ -30,19 +39,21 @@ const SHARED_COMPONENTS = [
   FilterDrawerComponent,
   MediaPlayerComponent,
   AccordionComponent,
-  SearchComponent
+  SearchComponent,
+  EgoiSubscribeComponent
 ];
 
 const SHARED_SERVICES = [
   ContentItemsService,
   FaqsService,
   BlogItemsService,
-  WINDOW_PROVIDERS
+  WINDOW_PROVIDERS,
+  EgoiService
 ]
 
 @NgModule({
   declarations: [
-    ...SHARED_COMPONENTS
+    ...SHARED_COMPONENTS,
   ],
   providers: [
     ...SHARED_SERVICES
@@ -53,7 +64,13 @@ const SHARED_SERVICES = [
     CarouselModule,
     ReactiveFormsModule,
     ContentLoaderModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
   ],
   exports: [
     ...SHARED_COMPONENTS

@@ -10,13 +10,13 @@
   <div class="content__media-player" *ngIf="contentItem.videoUrl">
     <t4e-media-player
       [videoUrl]="contentItem.videoUrl"
-      [videoPoster]="getVideoPoster()"
+      [videoPoster]="contentItem.imageUrl || getVideoPoster()"
       (onStartPlaying)="videoStartedPlaying$.next($event)"
       (onFinishedPlaying)="videoStoppedPlaying$.next($event)"
       (onVolumeChanged)="videoVolumeChanged$.next($event)"
     ></t4e-media-player>
   </div>
-  <div class="content__image" *ngIf="contentItem.imageUrl" [ngStyle]="{backgroundImage: 'url('+contentItem.imageUrl+')'}"></div>
+  <div class="content__image" *ngIf="contentItem.imageUrl && !contentItem.videoUrl" [ngStyle]="{backgroundImage: 'url('+contentItem.imageUrl+')'}"></div>
   <div class="content__info">
     <div class="block" *ngFor="let block of contentInfoBlocks">
       <div class="block__title">{{block.title}}</div>
@@ -50,4 +50,8 @@
       </div>
     </div>
   </div>
+  <div class="content__subscribe">
+    <t4e-egoi-subscribe></t4e-egoi-subscribe>
+  </div>
+
 </section>

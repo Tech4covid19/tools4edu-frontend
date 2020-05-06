@@ -121,5 +121,18 @@
         margin-bottom: 16px;
       }
     }
+    &__subscribe {
+      margin: 120px 90px;
+
+      @include media-laptop {
+        margin: 90px 45px;
+      }
+
+      @include media-tablet {
+        margin: 45px 0;
+      }
+    }
   }
+
+
 }

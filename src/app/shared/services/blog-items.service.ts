@@ -25,7 +25,8 @@ const GET_BLOG_ARTICLES = gql`
       text,
       slug,
       published,
-      createdAt
+      createdAt,
+      videoUrl
     }
   }
 `;
@@ -45,7 +46,8 @@ const GET_BLOG_ARTICLE = gql`
       text,
       slug,
       published,
-      createdAt
+      createdAt,
+      videoUrl
     }
   }
 `;

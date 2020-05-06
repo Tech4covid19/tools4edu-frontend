@@ -1,0 +1,27 @@
+<div class="egoi-subscribe-form-wrapper">
+  <h6>Se quiser receber as nossas atualizações por email, por favor introduza abaixo os seus dados:</h6>
+  <form [formGroup]="subscribeForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="Nome" formControlName="name">
+      <mat-error *ngIf="subscribeForm.controls['name'].hasError('required')">
+        Este campo é obrigatório
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Email" formControlName="email">
+      <mat-error *ngIf="subscribeForm.controls['email'].hasError('required')">
+        Este campo é obrigatório
+      </mat-error>
+      <mat-error *ngIf="subscribeForm.controls['email'].hasError('email')">
+        O email não é válido
+      </mat-error>
+    </mat-form-field>
+    <button [disabled]="isSubmitting" mat-raised-button color="primary" type="submit">Enviar</button>
+  </form>
+
+  <div class="form-result" [ngClass]="subscribeResult.type" *ngIf="!!subscribeResult" [@fadeAnimation]="subscribeResult">
+    <p>{{subscribeResult.message}}</p>
+  </div>
+</div>

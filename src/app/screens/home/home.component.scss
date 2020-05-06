@@ -184,6 +184,18 @@
   }
 }
 
+.t4e-section-subscribe {
+  .t4e-section__title {
+    margin-bottom: 6px;
+  }
+
+  ::ng-deep {
+    .egoi-subscribe-form-wrapper {
+      @include containerPadding();
+    }
+  }
+}
+
 .t4e-section-testimonies {
 
   .testimonies-wrapper {

@@ -6,6 +6,10 @@
   margin: 60px auto 0;
 
   .content {
+    &__media-player {
+      margin-bottom: 60px;
+    }
+
     &__image {
       width: 100%;
       height: 570px;
@@ -88,6 +92,21 @@
       .text {
         @include font('bodyText', 130%);
         margin-bottom: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+
+    &__subscribe {
+      margin: 120px 90px;
+
+      @include media-laptop {
+        margin: 90px 45px;
+      }
+
+      @include media-tablet {
+        margin: 45px 0;
       }
     }
   }

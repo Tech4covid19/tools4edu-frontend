@@ -7,5 +7,6 @@ export interface IBlogArticle {
   text?: string,
   slug: string,
   published: boolean,
-  createdAt?: Date
+  createdAt?: Date,
+  videoUrl?: string
 }

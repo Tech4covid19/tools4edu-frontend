@@ -170,15 +170,18 @@
 @mixin bodyTextFormatting() {
   ::ng-deep {
     h1 {
-
+      @include font('title1', 1);
+      margin: 0 0 24px;
     }
 
     h2 {
-
+      @include font('title2', 1);
+      margin: 0 0 16px;
     }
 
     h3 {
-      @include font('title3');
+      @include font('title3', 1);
+      margin: 0 0 12px;
     }
 
     h4 {
@@ -190,7 +193,8 @@
     }
 
     h6 {
-
+      @include font('bodyTextLargeHighlight', 1);
+      margin: 0 0 6px;
     }
 
     blockquote {
@@ -199,6 +203,13 @@
 
     pre {
 
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 40px;
+      align-self: center;
     }
 
     figure {

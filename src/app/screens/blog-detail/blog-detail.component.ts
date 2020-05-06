@@ -38,7 +38,9 @@ export class BlogDetailComponent implements OnInit {
     let infoBlocks = [];
 
     infoBlocks.push({title: 'Conteúdo', value: 'Artigo'})
-    infoBlocks.push({title: 'Leitura', value: this.getReadingTime() + ' min'})
+    if (this.getReadingTime() !== -1) {
+      infoBlocks.push({title: 'Leitura', value: this.getReadingTime() + ' min'})
+    }
 
     return infoBlocks;
   }
@@ -49,7 +51,7 @@ export class BlogDetailComponent implements OnInit {
     const readingTime = wordCount / WORDS_PER_MINUTE;
 
     if (readingTime < 1) {
-      return 1;
+      return -1;
     } else {
       return readingTime.toFixed(0);
     }
