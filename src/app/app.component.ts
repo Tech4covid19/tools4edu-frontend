@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import * as FullStory from '@fullstory/browser';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 't4e-root',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  constructor() {
+    FullStory.init({
+      orgId: 'V2PWV',
+      devMode: !environment.production
+    })
+  }
+
   title = 'tools4edu-frontend';
 }
